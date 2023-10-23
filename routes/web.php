@@ -54,6 +54,11 @@ Route::put('/equipo/{id}/EquipoEdit', [EquipoController::class, 'update'])->name
 //Sesion
 Route::get('sesion/create',[SesionController::class, 'create']);
 Route::resource('sesion',SesionController::class);
+Route::get('delete/{id}',[SesionController::class, 'destroy']);
+Route::post('/sesion/{id}/SesionEdit', [SesionController::class, 'update'])->name('sesion.update');
+Route::put('/sesion/{id}/SesionEdit', [SesionController::class, 'update'])->name('sesion.update');
+
+
 
 //Clientes
 Route::get('Clientes/create',[ClienteController::class, 'create']);
