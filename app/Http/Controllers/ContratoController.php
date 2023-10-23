@@ -66,32 +66,31 @@ class ContratoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-               // Validación de datos
-               $request->validate([
-                'fecha_inicio_contrato' => 'required',
-                'fecha_fin_contrato' => 'required',
-                'precio' => 'required',
+{
+    // Validación de datos
+    $request->validate([
+        'fecha_inicio_contrato' => 'required',
+        'fecha_fin_contrato' => 'required',
+        'precio' => 'required',
+    ]);
 
-        ]);
+    // Obtener el contrato a actualizar
+    $contrato = Contrato::find($id);
 
-        // Obtener el empleado a actualizar
-        $contrato = Contrato::find($id);
-
-        if (!$contrato) {
-            // Manejar el caso en que el empleado no se encuentra
-            return redirect('/contrato')->with('error', 'Contrato not found');
-        }
-
-        // Actualizar los datos del empleado
-        $contrato -> id = $request -> input('contrato_id');
-        $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
-        $contrato -> fecha_fin_contrato = $request -> input('fecha_fin_contrato');
-        $contrato -> precio = $request -> input('precio');
-        $contrato -> save();
-
-        return redirect('/contrato')->with('success', 'Empleado updated successfully');
+    if (!$contrato) {
+        // Manejar el caso en que el contrato no se encuentra
+        return redirect('/contrato')->with('error', 'Contrato not found');
     }
+
+    // Actualizar los datos del contrato
+    $contrato->fecha_inicio_contrato = $request->input('fecha_inicio_contrato');
+    $contrato->fecha_fin_contrato = $request->input('fecha_fin_contrato');
+    $contrato->precio = $request->input('precio');
+    $contrato->save();
+
+    return redirect('/contrato')->with('success', 'Contrato updated successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.

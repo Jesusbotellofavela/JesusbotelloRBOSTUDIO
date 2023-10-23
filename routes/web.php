@@ -31,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('contrato/create',[ContratoController::class, 'create']);
 Route::resource('contrato',ContratoController::class);
 Route::get('delete/{id}',[ContratoController::class, 'destroy']);
+Route::post('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
+
 
 
 
