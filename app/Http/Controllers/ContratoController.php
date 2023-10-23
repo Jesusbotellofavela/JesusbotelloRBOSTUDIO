@@ -55,17 +55,42 @@ class ContratoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contrato $contrato)
+    public function edit($id)
     {
         //
+        $contrato = Contrato::find($id);
+        return view('ContratoEdit', compact('contrato'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request, $id)
     {
-        //
+               // Validación de datos
+               $request->validate([
+                'fecha_inicio_contrato' => 'required',
+                'fecha_fin_contrato' => 'required',
+                'precio' => 'required',
+
+        ]);
+
+        // Obtener el empleado a actualizar
+        $contrato = Contrato::find($id);
+
+        if (!$contrato) {
+            // Manejar el caso en que el empleado no se encuentra
+            return redirect('/contrato')->with('error', 'Contrato not found');
+        }
+
+        // Actualizar los datos del empleado
+        $contrato -> id = $request -> input('contrato_id');
+        $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
+        $contrato -> fecha_fin_contrato = $request -> input('fecha_fin_contrato');
+        $contrato -> precio = $request -> input('precio');
+        $contrato -> save();
+
+        return redirect('/contrato')->with('success', 'Empleado updated successfully');
     }
 
     /**
