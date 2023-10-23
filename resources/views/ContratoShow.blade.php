@@ -1,15 +1,23 @@
 @extends('layouts.app')
-@section('title', 'Contratos')
+
+@section('title', 'Detalles del Contrato')
+
 @section('content')
-<div class="card text-center" style="width: 18rem; margin-top: 70px;">
-    <div class="card-body">
-        <h5 class="card-title">{{$contrato->name_product}}</h5>
-        <p class="card-text">ID de contrato: {{$contrato->contrato_id}}</p>
-        <p class="card-text">Fecha de inicio del contrato: {{$contrato->fecha_inicio_contrato}}</p>
-        <p class="card-text">Fecha de finalizacion del contrato: {{$contrato->fecha_fin_contrato}}</p>
-        <p class="card-text">Costo del contrato ${{$contrato->precio}}</p>
-        <a href="/delete/{{$contrato->id}}" class="btn btn-primary">DELETE</a>
-        <a href="/edit/{{$contrato->id}}/edit" class="btn btn-secondary">EDITAR</a>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">{{$contrato->name_product}}</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>ID de contrato:</strong> {{$contrato->contrato_id}}</p>
+            <p class="card-text"><strong>Fecha de inicio del contrato:</strong> {{$contrato->fecha_inicio_contrato}}</p>
+            <p class="card-text"><strong>Fecha de finalización del contrato:</strong> {{$contrato->fecha_fin_contrato}}</p>
+            <p class="card-text"><strong>Costo del contrato:</strong> ${{$contrato->precio}}</p>
+        </div>
+        <div class="card-footer">
+            <a href="/delete/{{$contrato->id}}" class="btn btn-danger">Eliminar</a>
+            <a href="/edit/{{$contrato->id}}/edit" class="btn btn-secondary">Editar</a>
+        </div>
     </div>
 </div>
 @endsection

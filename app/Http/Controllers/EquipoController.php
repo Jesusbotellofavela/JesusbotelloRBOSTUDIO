@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipo;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class EquipoController extends Controller
 {
@@ -13,9 +12,8 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        //
-        $Equipo=Equipo::all();
-        return view('EquipoIndex', compact('Equipo'));
+        $equipo = Equipo::all();
+        return view('EquipoIndex', compact('equipo'));
     }
 
     /**
@@ -23,7 +21,6 @@ class EquipoController extends Controller
      */
     public function create()
     {
-        //
         return view('equipocreate');
     }
 
@@ -32,16 +29,14 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $Equipo = new Equipo();
-        $Equipo -> id = $request -> input('equipo_id');
-        $Equipo -> nombre = $request -> input('nombre');
-        $Equipo -> cantidad_disponible = $request -> input('cantidad_disponible');
-        $Equipo -> descripcion = $request -> input('descripcion');
-        $Equipo -> precio = $request -> input('precio');
-        $Equipo -> save();
-        return redirect('/equipo');
-
+        $equipo = new Equipo();
+        $equipo->equipo_id = $request->input('equipo_id');
+        $equipo->nombre = $request->input('nombre');
+        $equipo->cantidad_disponible = $request->input('cantidad_disponible');
+        $equipo->descripcion = $request->input('descripcion');
+        $equipo->precio = $request->input('precio');
+        $equipo->save();
+        return redirect('/Equipo');
     }
 
     /**
@@ -49,30 +44,58 @@ class EquipoController extends Controller
      */
     public function show(Equipo $equipo)
     {
-        //
+        return view('EquipoShow', compact('equipo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Equipo $equipo)
+    public function edit($id)
     {
-        //
+        $equipo = Equipo::find($id);
+        return view('EquipoEdit', compact('equipo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Equipo $equipo)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'cantidad_disponible' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required',
+        ]);
+
+        $equipo = Equipo::find($id);
+
+        if (!$equipo) {
+            return redirect('/equipo')->with('error', 'Equipo not found');
+        }
+
+        $equipo->nombre = $request->input('nombre');
+        $equipo->cantidad_disponible = $request->input('cantidad_disponible');
+        $equipo->descripcion = $request->input('descripcion');
+        $equipo->precio = $request->input('precio');
+        $equipo->save();
+
+        return redirect('/equipo')->with('success', 'Equipo updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Equipo $equipo)
+    public function destroy($id)
     {
-        //
+        $equipo = Equipo::find($id);
+
+        if (!$equipo) {
+            return redirect('/equipo')->with('error', 'El equipo ya no se encuentra disponible o ya ha sido eliminado');
+        }
+
+        $equipo->delete();
+
+        return redirect('/equipo')->with('success', 'El equipo se ha eliminado exitosamente');
     }
 }

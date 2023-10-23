@@ -32,6 +32,8 @@ Route::get('contrato/create',[ContratoController::class, 'create']);
 Route::resource('contrato',ContratoController::class);
 Route::get('delete/{id}',[ContratoController::class, 'destroy']);
 Route::post('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
+Route::put('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
+
 
 
 
@@ -43,6 +45,11 @@ Route::resource('transaccion',TransaccionController::class);
 //Equipo
 Route::get('equipo/create',[EquipoController::class, 'create']);
 Route::resource('equipo',EquipoController::class);
+Route::get('delete/{id}',[EquipoController::class, 'destroy']);
+Route::post('/equipo/{id}/EquipoEdit', [EquipoController::class, 'update'])->name('equipo.update');
+Route::put('/equipo/{id}/EquipoEdit', [EquipoController::class, 'update'])->name('equipo.update');
+
+
 
 //Sesion
 Route::get('sesion/create',[SesionController::class, 'create']);
