@@ -18,7 +18,11 @@
                         <p class="card-text">Precio del equipo: ${{$equipo->precio}}</p>
                         <a href="{{ route('equipo.show', $equipo->id) }}" class="btn btn-secondary mr-2">Mostrar</a>
                         <a href="{{ route('equipo.edit', $equipo->id) }}" class="btn btn-primary mr-2">Editar</a>
-                        <a href="{{ route('equipo.destroy', $equipo->id) }}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este equipo?')">Eliminar</a>
+                        <form method="POST" action="{{ route('equipo.destroy', $equipo->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar este equipo?')">Eliminar equipo fotografico</button>
+        </form>
                     </div>
                 </div>
             </div>

@@ -30,13 +30,13 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         $equipo = new Equipo();
-        $equipo->equipo_id = $request->input('equipo_id');
+        $equipo->id = $request->input('equipo_id');
         $equipo->nombre = $request->input('nombre');
         $equipo->cantidad_disponible = $request->input('cantidad_disponible');
         $equipo->descripcion = $request->input('descripcion');
         $equipo->precio = $request->input('precio');
         $equipo->save();
-        return redirect('/Equipo');
+        return redirect('/equipo');
     }
 
     /**

@@ -68,9 +68,11 @@ Route::put('/sesion/{id}/SesionEdit', [SesionController::class, 'update'])->name
 
 
 //Clientes
-Route::get('Clientes/create',[ClienteController::class, 'create']);
-Route::resource('Clientes',ClienteController::class);
-
+Route::get('cliente/create',[ClienteController::class, 'create']);
+Route::resource('cliente',ClienteController::class);
+Route::get('delete/{id}',[ClienteController::class, 'destroy']);
+Route::post('/cliente/{id}/ClientesEdit', [ClienteController::class, 'update'])->name('cliente.update');
+Route::put('/contrato/{id}/ClientesEdit', [ClienteController::class, 'update'])->name('cliente.update');
 
 
 

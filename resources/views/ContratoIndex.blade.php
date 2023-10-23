@@ -18,7 +18,11 @@
                     <div class="text-center">
                         <a href="/contrato/{{$contrato->id}}" class="btn btn-secondary mr-2">Mostrar</a>
                         <a href="/contrato/{{$contrato->id}}/edit" class="btn btn-primary mr-2">Editar</a>
-                        <a href="/delete/{{$contrato->id}}" class="btn btn-danger">Eliminar</a>
+                        <form method="POST" action="{{ route('contrato.destroy', $contrato->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar este pedido?')">Eliminar</button>
+        </form>
                     </div>
                 </div>
             </div>

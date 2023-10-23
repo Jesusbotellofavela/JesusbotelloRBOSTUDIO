@@ -17,7 +17,10 @@
                     <div class="text-center">
                         <a href="/sesion/{{ $sesion->id }}" class="btn btn-secondary mr-2">Mostrar</a>
                         <a href="/sesion/{{ $sesion->id }}/edit" class="btn btn-primary mr-2">Editar</a>
-                        <a href="/delete/{{ $sesion->id }}" class="btn btn-danger">Eliminar</a>
+                        <form method="POST" action="{{ route('sesion.destroy', $sesion->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar esta sesion?')">Eliminar </button>
                     </div>
                 </div>
             </div>

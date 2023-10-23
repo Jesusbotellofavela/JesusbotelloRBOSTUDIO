@@ -30,7 +30,7 @@ class TransaccionController extends Controller
     public function store(Request $request)
     {
         $transaccion = new Transacciones();
-        $transaccion->transaccion_id = $request->input('transaccion_id');
+        $transaccion->id = $request->input('transaccion_id');
         $transaccion->tipo_transaccion = $request->input('tipo_transaccion');
         $transaccion->monto = $request->input('monto');
         $transaccion->fecha_transaccion = $request->input('fecha_transaccion');
