@@ -4,21 +4,27 @@
 
 @section('content')
 <div class="container">
-    <h2>Listado de Sesiones Fotograficas</h2>
-        @foreach ($sesions as $sesions)
-            <div class="card">
-                <h5 class="card-header">ID de la sesion: {{$sesions->sesion_id}}</h5>
+    <h2 class="text-center mt-4">Listado de Sesiones Fotográficas</h2>
+    <div class="row">
+        @foreach ($sesions as $sesion)
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
                 <div class="card-body">
-                    <p class="card-text">Fecha de la sesion: {{$sesions->fecha_inicio}}</p>
-                    <p class="card-text">Descripcion de la sesion: {{$sesions->descripcion_sesion}}</p>
-                    <p class="card-text">Fecha de finalizacción de la sesion: {{$sesions->fecha_fin}}</p>
+                    <h5 class="card-title">ID de la Sesión: {{ $sesion->sesion_id }}</h5>
+                    <p class="card-text">Fecha de la Sesión: {{ $sesion->fecha_inicio }}</p>
+                    <p class="card-text">Descripción de la Sesión: {{ $sesion->descripcion_sesion }}</p>
+                    <p class="card-text">Fecha de Finalización de la Sesión: {{ $sesion->fecha_fin }}</p>
                     <div class="text-center">
-                        <a href="/sesion/{{$sesions->id}}" class="btn btn-secondary mr-2">Mostrar</a>
-                        <a href="/sesion/{{$sesions->id}}/edit" class="btn btn-primary mr-2">Editar</a>
-                        <a href="/delete/{{$sesions->id}}" class="btn btn-danger">Eliminar</a>
+                        <a href="/sesion/{{ $sesion->id }}" class="btn btn-secondary mr-2">Mostrar</a>
+                        <a href="/sesion/{{ $sesion->id }}/edit" class="btn btn-primary mr-2">Editar</a>
+                        <a href="/delete/{{ $sesion->id }}" class="btn btn-danger">Eliminar</a>
                     </div>
                 </div>
+            </div>
+        </div>
         @endforeach
     </div>
 </div>
 @endsection
+
+
