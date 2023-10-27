@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mt-4">Listado de Transacciones</h2>
+    <h2 class="text-center mt-4">Listado de Transacciones</h2>
     <div class="row">
         @foreach ($transaccion as $transaccion)
             <div class="col-md-4 mb-4">

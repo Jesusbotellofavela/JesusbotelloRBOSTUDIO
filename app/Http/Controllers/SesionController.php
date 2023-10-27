@@ -12,8 +12,8 @@ class SesionController extends Controller
      */
     public function index()
     {
-        $sesions = Sesiones::all();
-        return view('SesionIndex', compact('sesions'));
+        $sesion = Sesiones::all();
+        return view('SesionIndex', compact('sesion'));
     }
 
     /**
@@ -29,21 +29,21 @@ class SesionController extends Controller
      */
     public function store(Request $request)
     {
-        $sesions = new Sesiones();
-        $sesions->id = $request->input('sesion_id');
-        $sesions->fecha_inicio = $request->input('fecha_inicio');
-        $sesions->descripcion_sesion = $request->input('descripcion_sesion');
-        $sesions->fecha_fin = $request->input('fecha_fin');
-        $sesions->save();
+        $sesion = new Sesiones();
+        $sesion->id = $request->input('sesion_id');
+        $sesion->fecha_inicio = $request->input('fecha_inicio');
+        $sesion->descripcion_sesion = $request->input('descripcion_sesion');
+        $sesion->fecha_fin = $request->input('fecha_fin');
+        $sesion->save();
         return redirect('/sesion');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sesiones $sesions)
+    public function show(Sesiones $sesion)
     {
-        return view('SesionShow', compact('sesions'));
+        return view('SesionShow', compact('sesion'));
     }
 
     /**
@@ -51,8 +51,8 @@ class SesionController extends Controller
      */
     public function edit($id)
     {
-        $sesions = Sesiones::find($id);
-        return view('SesionEdit', compact('sesions'));
+        $sesion = Sesiones::find($id);
+        return view('SesionEdit', compact('sesion'));
     }
 
     /**
@@ -66,16 +66,16 @@ class SesionController extends Controller
             'fecha_fin' => 'required',
         ]);
 
-        $sesions = Sesiones::find($id);
+        $sesion = Sesiones::find($id);
 
-        if (!$sesions) {
+        if (!$sesion) {
             return redirect('/sesion')->with('error', 'Sesión not found');
         }
 
-        $sesions->fecha_inicio = $request->input('fecha_inicio');
-        $sesions->descripcion_sesion = $request->input('descripcion_sesion');
-        $sesions->fecha_fin = $request->input('fecha_fin');
-        $sesions->save();
+        $sesion->fecha_inicio = $request->input('fecha_inicio');
+        $sesion->descripcion_sesion = $request->input('descripcion_sesion');
+        $sesion->fecha_fin = $request->input('fecha_fin');
+        $sesion->save();
 
         return redirect('/sesion')->with('success', 'Sesión updated successfully');
     }
@@ -85,13 +85,13 @@ class SesionController extends Controller
      */
     public function destroy($id)
     {
-        $sesions = Sesiones::find($id);
+        $sesion = Sesiones::find($id);
 
-        if (!$sesions) {
+        if (!$sesion) {
             return redirect('/sesion')->with('error', 'La sesión ya no se encuentra disponible o ya ha sido eliminada');
         }
 
-        $sesions->delete();
+        $sesion->delete();
 
         return redirect('/sesion')->with('success', 'La sesión se ha eliminado exitosamente');
     }

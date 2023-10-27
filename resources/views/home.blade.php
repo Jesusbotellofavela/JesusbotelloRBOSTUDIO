@@ -8,7 +8,7 @@
     <br>
     <br>
     <div class="text-center">
-        <img src="{{ asset('astronauta.jpg') }}" class="img-fluid">
+        <img src="{{ asset('RS.JPG') }}" class="img-fluid">
     </div>
     <br>
     <br>

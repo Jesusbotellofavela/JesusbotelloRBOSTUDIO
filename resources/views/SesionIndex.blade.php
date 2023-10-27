@@ -6,7 +6,7 @@
 <div class="container">
     <h2 class="text-center mt-4">Listado de Sesiones Fotográficas</h2>
     <div class="row">
-        @foreach ($sesions as $sesion)
+        @foreach ($sesion as $sesion)
         <div class="col-md-4 mb-4">
             <div class="card shadow">
                 <div class="card-body">

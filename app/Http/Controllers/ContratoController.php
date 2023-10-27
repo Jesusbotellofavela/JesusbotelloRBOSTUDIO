@@ -33,6 +33,7 @@ class ContratoController extends Controller
     public function store(Request $request)
     {
         //
+
         $contrato = new Contrato();
         $contrato -> id = $request -> input('contrato_id');
         $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
