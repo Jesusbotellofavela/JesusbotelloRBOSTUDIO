@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container mt-5">
+<a href="javascript:window.history.back()" class="btn btn-secondary">Regresar</a>
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">{{$equipo->name_product}}</h5>

@@ -1,0 +1,54 @@
+/* Cambiar el color de fondo de la barra de navegación */
+.navbar {
+    background-color: #0056b2;
+}
+
+/* Cambiar el color de la fuente de los elementos de navegación */
+.navbar .nav-link {
+    color: #000000; /* Color blanco */
+}
+
+/* Cambiar el color de la fuente al pasar el mouse por encima de los elementos de navegación */
+.navbar .nav-link:hover {
+    color: #e0d645cb; /* Color naranja */
+}
+
+/* Aumentar el tamaño de fuente en los elementos de navegación */
+.navbar .nav-link {
+    font-size: 16px;
+}
+
+/* Alinear a la derecha los elementos del lado derecho de la barra de navegación */
+.navbar .navbar-nav.ms-auto {
+    text-align: center;
+}
+
+/* Cambiar el color de fondo del botón de inicio de sesión (cuando no se ha iniciado sesión) */
+.navbar .nav-link[href="{{ route('login')"] {
+    background-color: #ff9900; /* Color naranja */
+}
+
+/* Cambiar el color de fondo del botón de registro (cuando no se ha iniciado sesión) */
+.navbar .nav-link[href="{{ route('register')"] {
+    background-color: #4CAF50; /* Color verde */
+}
+
+/* Alinear a la derecha el menú desplegable */
+.navbar .dropdown-menu-end {
+    right: 0;
+}
+
+/* Cambiar el color de fondo del menú desplegable */
+.navbar .dropdown-menu {
+    background-color: #0056b2;
+}
+
+/* Cambiar el color de fuente del menú desplegable */
+.navbar .dropdown-menu .dropdown-item {
+    color: #000000; /* Color blanco */
+}
+
+/* Cambiar el color de fuente al pasar el mouse por encima del menú desplegable */
+.navbar .dropdown-menu .dropdown-item:hover {
+    color: #e0d645cb; /* Color naranja */
+}

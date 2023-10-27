@@ -3,7 +3,6 @@
 @if (isset($cliente))
     {{ Form::hidden('_method', 'PUT') }}
 @endif
-
 <div class="col-md-6">
     {{ Form::label('cliente_id', 'Cliente ID:', ['class' => 'form-label']) }}
     {{ Form::text('cliente_id', $cliente->cliente_id ?? old('cliente_id'), ['class' => 'form-control', 'id' => 'cliente_id', 'required' => 'required']) }}
