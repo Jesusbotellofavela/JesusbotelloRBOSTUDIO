@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\pdf as PDF;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function pdf() {
+        $cliente = Cliente::all();
+        $pdf = PDF::loadView('pdf.listado', compact('cliente'));
+        return $pdf->download('listado.pdf');
+
+    }
+
+
+
     public function index()
     {
         $cliente = Cliente::all();

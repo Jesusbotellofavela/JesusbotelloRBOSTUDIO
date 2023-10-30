@@ -1,0 +1,10 @@
+.btn-golden-hover {
+    background-color: #343a40; /* Color oscuro de fondo */
+    color: #ffc107; /* Color de texto dorado */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-golden-hover:hover {
+    background-color: #ffc107; /* Cambio a dorado en hover */
+    color: #343a40; /* Cambio de color de texto en hover */
+}

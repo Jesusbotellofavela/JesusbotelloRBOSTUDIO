@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\pdf as PDF;
+
 
 class EquipoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function pdf() {
+        $equipo = Equipo::all();
+        $pdf = PDF::loadView('pdf.listadoEquipo', compact('equipo'));
+        return $pdf->download('listadoEquipo.pdf');
+
+    }
+
+
+
     public function index()
     {
         $equipo = Equipo::all();

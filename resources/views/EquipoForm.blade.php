@@ -5,8 +5,8 @@
 @endif
 
 <div class="col-md-6">
-    {{ Form::label('equipo_id', 'ID del Equipo', ['class' => 'form-label']) }}
-    {{ Form::text('equipo_id', $equipo->equipo_id ?? old('equipo_id'), ['class' => 'form-control', 'id' => 'equipo_id', 'required' => 'required']) }}
+    {{ Form::label('id', 'ID del Equipo', ['class' => 'form-label']) }}
+    {{ Form::text('id', $equipo->id ?? old('equipo_id'), ['class' => 'form-control', 'id' => 'equipo_id', 'required' => 'required']) }}
     <div class="valid-feedback">
         ¡Se ve bien!
     </div>

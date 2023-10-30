@@ -10,7 +10,7 @@
             <h5 class="card-title">{{$contrato->name_product}}</h5>
         </div>
         <div class="card-body">
-            <p class="card-text"><strong>ID de contrato:</strong> {{$contrato->contrato_id}}</p>
+            <p class="card-text"><strong>ID de contrato:</strong> {{$contrato->id}}</p>
             <p class="card-text"><strong>Fecha de inicio del contrato:</strong> {{$contrato->fecha_inicio_contrato}}</p>
             <p class="card-text"><strong>Fecha de finalización del contrato:</strong> {{$contrato->fecha_fin_contrato}}</p>
             <p class="card-text"><strong>Costo del contrato:</strong> ${{$contrato->precio}}</p>
@@ -18,6 +18,7 @@
         <div class="card-footer">
             <a href="/delete/{{$contrato->id}}" class="btn btn-danger">Eliminar</a>
             <a href="/edit/{{$contrato->id}}/edit" class="btn btn-secondary">Editar</a>
+            <a href="{{ route('listadoContrato.pdf') }}" class="btn btn-primary">PDF</a>
         </div>
     </div>
 </div>

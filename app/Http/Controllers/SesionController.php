@@ -4,13 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Sesiones;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\pdf as PDF;
 
 class SesionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+    public function pdf() {
+        $sesion = Sesiones::all();
+        $pdf = PDF::loadView('pdf.listadoSesion', compact('sesion'));
+        return $pdf->download('listadoSesion.pdf');
+
+    }
+
+
+     public function index()
     {
         $sesion = Sesiones::all();
         return view('SesionIndex', compact('sesion'));

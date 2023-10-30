@@ -10,14 +10,15 @@
             <h5 class="card-title">{{$transaccion->name_product}}</h5>
         </div>
         <div class="card-body">
-            <p class="card-text"><strong>ID de la transacción:</strong> {{$transaccion->transaccion_id}}</p>
+            <p class="card-text"><strong>ID de la transacción:</strong> {{$transaccion->id}}</p>
             <p class="card-text"><strong>Tipo de transacción:</strong> {{$transaccion->tipo_transaccion}}</p>
-            <p class="card-text"><strong>Monto de la transacción:</strong> ${{$transaccion->monto}}</p>
+            <p class="card-text"><strong>Monto de la transacción $:</strong> ${{$transaccion->monto}}</p>
             <p class="card-text"><strong>Fecha de la transacción:</strong> {{$transaccion->fecha_transaccion}}</p>
         </div>
         <div class="card-footer">
             <a href="/delete/{{$transaccion->id}}" class="btn btn-danger">Eliminar</a>
             <a href="/edit/{{$transaccion->id}}/edit" class="btn btn-secondary">Editar</a>
+            <a href="{{ route('listadoTransaccion.pdf') }}" class="btn btn-primary">PDF</a>
         </div>
     </div>
 </div>

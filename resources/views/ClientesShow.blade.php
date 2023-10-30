@@ -10,7 +10,7 @@
             <h5 class="card-title">{{$cliente->name_product}}</h5>
         </div>
         <div class="card-body">
-            <p class="card-text"><strong>ID del cliente:</strong> {{$cliente->cliente_id}}</p>
+            <p class="card-text"><strong>ID del cliente:</strong> {{$cliente->id}}</p>
             <p class="card-text"><strong>Nombre del cliente:</strong> {{$cliente->nombre_cliente}}</p>
             <p class="card-text"><strong>Apellido paterno del cliente:</strong> {{$cliente->apellido_paterno_cliente}}</p>
             <p class="card-text"><strong>Apellido materno del cliente:</strong> {{$cliente->apellido_materno_cliente}}</p>
@@ -28,6 +28,7 @@
         <div class="card-footer">
             <a href="/delete/{{$cliente->id}}" class="btn btn-danger">Eliminar</a>
             <a href="/edit/{{$cliente->id}}/edit" class="btn btn-secondary">Editar</a>
+            <a href="{{ route('listado.pdf') }}" class="btn btn-primary">PDF</a>
         </div>
     </div>
 </div>

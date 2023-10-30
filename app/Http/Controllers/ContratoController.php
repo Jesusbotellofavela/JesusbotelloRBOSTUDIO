@@ -5,12 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Contrato;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\pdf as PDF;
+
 
 class ContratoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function pdf() {
+        $contrato = Contrato::all();
+        $pdf = PDF::loadView('pdf.listadoContrato', compact('contrato'));
+        return $pdf->download('listadoContrato.pdf');
+
+    }
+
+
+
+
     public function index()
     {
         //
