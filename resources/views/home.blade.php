@@ -30,6 +30,11 @@
         <a href="{{ route('equipo.create') }}" class="btn btn-warning" style="background-color: #FFA500; border-color: #FFA500;">AGREGAR EQUIPO FOTOGRAFICO</a> <!-- Botón rojo oscuro -->
         <a href="{{ route('sesion.create') }}" class="btn btn-warning" style="background-color: #FFA500; border-color: #FFA500;">AGREGAR SESIONES</a> <!-- Botón naranja oscuro -->
 
+
+
+
+        <!-- Código de instalación Cliengo para jesusbotellofavela@gmail.com -->
+         <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
     </div>
 </div>
 @endsection

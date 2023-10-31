@@ -36,7 +36,7 @@
             ¡Se ve bien!
         </div>
     </div>
-
+    <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
     <div class="col-12">
         {{ Form::submit(isset($transaccion) ? 'Guardar Cambios' : 'Guardar Transacción', ['class' => 'btn btn-primary']) }}
     </div>

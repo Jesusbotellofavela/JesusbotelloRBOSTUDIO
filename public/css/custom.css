@@ -1,6 +1,6 @@
 /* Cambiar el color de fondo de la barra de navegación */
 .navbar {
-    background-color: #0056b2;
+    background-color: #2e3004;
 }
 
 /* Cambiar el color de la fuente de los elementos de navegación */
@@ -40,15 +40,15 @@
 
 /* Cambiar el color de fondo del menú desplegable */
 .navbar .dropdown-menu {
-    background-color: #0056b2;
+    background-color: #232001;
 }
 
 /* Cambiar el color de fuente del menú desplegable */
 .navbar .dropdown-menu .dropdown-item {
-    color: #000000; /* Color blanco */
+    color: #fffdfd; /* Color blanco */
 }
 
 /* Cambiar el color de fuente al pasar el mouse por encima del menú desplegable */
 .navbar .dropdown-menu .dropdown-item:hover {
-    color: #e0d645cb; /* Color naranja */
+    color: #4b4609cb; /* Color naranja */
 }

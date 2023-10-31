@@ -6,6 +6,8 @@ use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TransaccionController;
+use Illuminate\Support\Facades\Redirect;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +18,13 @@ use App\Http\Controllers\TransaccionController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
+
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
 
 Auth::routes();
 

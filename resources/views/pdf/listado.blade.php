@@ -1,5 +1,7 @@
 @extends('layouts.pdfinicio')
 @section('content')
+<meta charset="UTF-8">
+    <title>Lista de Clientes</title>
 <style>
     @font-face {
         font-family: 'glyphicons_halflings_normal';
@@ -7,21 +9,33 @@
     }
 </style>
 
+
 <table class="table table-hover table-striped">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Apellido</th>
-            <th>email</th>
+            <th>Nombre</th>
+            <th>Apellido paterno</th>
+            <th>Apellido materno</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+
+
         </tr>
     </thead>
     <tbody>
         @foreach ($cliente as $cliente)
             <tr>
-                <td>{{ $cliente->id }}</td>
-                <td>{{ $cliente->nombre_cliente }}</td>
-                <td>{{ $cliente->email }}</td>
+                <td>{{$cliente->id }}</td>
+                <td>{{$cliente->nombre_cliente }}</td>
+                <td>{{$cliente->apellido_paterno_cliente}}</td>
+                <td>{{$cliente->apellido_materno_cliente}}</td>
+                <td>{{$cliente->email }}</td>
+                <td>{{$cliente->telefono}}</td>
+                <td>{{$cliente->direccion}}</td>
+
+
                 <td class="text-right">
             <!--<img src="{{ public_path('images/' . $cliente->image) }}" alt="image" width="100">-->
             </td>
