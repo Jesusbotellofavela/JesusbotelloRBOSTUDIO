@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <section class="text-center text-lg-start">
   <style>

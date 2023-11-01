@@ -20,6 +20,7 @@
             <th>Email</th>
             <th>Teléfono</th>
             <th>Dirección</th>
+            <th>Referencia de la dirección</th>
 
 
         </tr>
@@ -34,6 +35,7 @@
                 <td>{{$cliente->email }}</td>
                 <td>{{$cliente->telefono}}</td>
                 <td>{{$cliente->direccion}}</td>
+                <td>{{$cliente->referencia_ubicacion}}</td>
 
 
                 <td class="text-right">

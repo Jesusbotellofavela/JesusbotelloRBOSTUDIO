@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="container">
-<div class="container mt-4">
     <h2 class="text-center mb-4"><strong>Listado de clientes</strong></h2>
-<div class="row">
-    @foreach ($cliente as $cliente)
-    <div class="col-md-4 mb-4">
-    <div class="card shadow">
+    <div class="row">
+        @foreach ($cliente as $cliente)
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-body">
 
                 <div class="card-body">
                 <p class="card-text"><strong>ID del cliente:</strong> {{ $cliente->id }}</p>
@@ -24,6 +24,7 @@
                 <p class="card-text"><strong>ID de la transacción financiera:</strong> {{$cliente->transaccion_id}}</p>
                 <p class="card-text"><strong>ID del contrato:</strong> {{$cliente->contrato_id}}</p>
                 <p class="card-text"><strong>ID del usuario de registro:</strong> {{$cliente->users_id}}</p>
+                <p class="card-text"><strong>Referencia de la dirección:</strong> {{$cliente->referencia_ubicacion}}</p>
                 <div class="text-center">
                 <a href="/cliente/{{$cliente->id}}" class="btn btn-secondary mr-2">Mostrar</a>
                 <a href="/cliente/{{$cliente->id}}/edit" class="btn btn-primary mr-2">Editar</a>

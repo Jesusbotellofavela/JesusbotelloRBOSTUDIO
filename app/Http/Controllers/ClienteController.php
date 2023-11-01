@@ -50,6 +50,7 @@ class ClienteController extends Controller
         $cliente->transaccion_id = $request->input('transaccion_id');
         $cliente->contrato_id = $request->input('contrato_id');
         $cliente->users_id = $request->input('users_id');
+        $cliente->referencia_ubicacion = $request->input('referencia_ubicacion');
         $cliente->save();
         return redirect('/cliente');
     }
@@ -88,6 +89,7 @@ class ClienteController extends Controller
             'transaccion_id' => 'required',
             'contrato_id' => 'required',
             'users_id' => 'required',
+            'referencia_ubicacion'=> 'required',
         ]);
 
         $cliente = Cliente::find($id);
@@ -107,6 +109,7 @@ class ClienteController extends Controller
         $cliente->transaccion_id = $request->input('transaccion_id');
         $cliente->contrato_id = $request->input('contrato_id');
         $cliente->users_id = $request->input('users_id');
+        $cliente->referencia_ubicacion = $request->input('referencia_ubicacion');
         $cliente->save();
 
         return redirect('/cliente')->with('success', 'Cliente updated successfully');

@@ -59,6 +59,7 @@
     </div>
 </div>
 
+
 <div class="col-md-6">
     {{ Form::label('equipo_id', 'Equipo ID:', ['class' => 'form-label']) }}
     {{ Form::text('equipo_id', $cliente->equipo_id ?? old('equipo_id'), ['class' => 'form-control', 'id' => 'equipo_id', 'required' => 'required']) }}
@@ -94,6 +95,14 @@
 <div class="col-md-6">
     {{ Form::label('users_id', 'Users ID:', ['class' => 'form-label']) }}
     {{ Form::text('users_id', $cliente->users_id ?? old('users_id'), ['class' => 'form-control', 'id' => 'users_id', 'required' => 'required']) }}
+    <div class="valid-feedback">
+        ¡Se ve bien!
+    </div>
+</div>
+
+<div class="col-md-6">
+    {{ Form::label('referencia_ubicacion', 'Referencia de la direccion:', ['class' => 'form-label']) }}
+    {{ Form::text('referencia_ubicacion', $cliente->referencia_ubicacion ?? old('referencia_ubicacion'), ['class' => 'form-control', 'id' => 'referencia_ubicacion', 'required' => 'required']) }}
     <div class="valid-feedback">
         ¡Se ve bien!
     </div>

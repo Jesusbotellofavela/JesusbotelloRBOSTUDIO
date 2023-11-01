@@ -17,12 +17,12 @@
             <p class="card-text"><strong>Email:</strong> ${{$cliente->email}}</p>
             <p class="card-text"><strong>Teléfono de Contacto:</strong> {{$cliente->telefono}}</p>
             <p class="card-text"><strong>Direccion de vivienda del cliente:</strong> {{$cliente->direccion}}</p>
-            <p class="card-text"><strong>Descripcion del trabajo a realizar:</strong> {{$cliente->descripcion}}</p>
             <p class="card-text"><strong>ID del equipo a utilizar:</strong> ${{$cliente->equipo_id}}</p>
             <p class="card-text"><strong>ID asignado a la sesion:</strong> {{$cliente->sesion_id}}</p>
             <p class="card-text"><strong>ID de la transaccion financiera:</strong> {{$cliente->transaccion_id}}</p>
             <p class="card-text"><strong>ID del contrato:</strong> {{$cliente->contrato_id}}</p>
             <p class="card-text"><strong>ID de usuario de registro:</strong> {{$cliente->users_id}}</p>
+            <p class="card-text"><strong>Referencia de la dirección:</strong> {{$cliente->referencia_ubicacion}}</p>
 
         </div>
         <div class="card-footer">
