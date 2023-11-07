@@ -16,9 +16,17 @@
             <p class="card-text"><strong>Costo del contrato:</strong> ${{$contrato->precio}}</p>
         </div>
         <div class="card-footer">
-            <a href="/delete/{{$contrato->id}}" class="btn btn-danger">Eliminar</a>
-            <a href="/edit/{{$contrato->id}}/edit" class="btn btn-secondary">Editar</a>
-            <a href="{{ route('listadoContrato.pdf') }}" class="btn btn-primary">PDF</a>
+        <div class="btn-group">
+        <a href="/contrato/{{$contrato->id}}/edit" class="btn btn-primary mr-2">Editar</a>
+                        <form method="POST" action="{{ route('contrato.destroy', $contrato->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar este contrato?')">Eliminar</button>
+                        </form>
+                        </div>
+
+
+
             <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
         </div>
     </div>

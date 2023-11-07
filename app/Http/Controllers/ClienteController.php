@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Contrato;
+use App\Models\Equipo;
+use App\Models\User;
+use App\Models\Sesiones;
+use App\Models\Transacciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\pdf as PDF;
@@ -18,18 +23,33 @@ class ClienteController extends Controller
 
 
 
-    public function index()
+   public function index(Request $request)
     {
-        $cliente = Cliente::all();
-        return view('ClientesIndex', compact('cliente'));
-    }
+        $query = $request->input('query'); // Obtén el término de búsqueda del formulario
 
+        if ($query) {
+            // Si se proporciona un término de búsqueda, realiza la búsqueda con Scout en el modelo Cliente
+            $clientes = Cliente::search($query)->get();
+            return view('ClientesSearch', compact('clientes')); // Redirige a la vista de resultados
+        } else {
+            // Si no se proporciona un término de búsqueda, carga todos los clientes con relaciones
+            $clientes = Cliente::with('Contrato', 'Equipo', 'Sesiones', 'Transacciones', 'User')->get();
+        }
+
+        return view('ClientesIndex', compact('clientes'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('clientescreate');
+        $contrato = Contrato::all();
+        $equipo = Equipo::all();
+        $sesion = Sesiones::all();
+        $transaccion = Transacciones::all();
+        $users = User::all();
+
+        return view('clientescreate', compact('contrato','equipo','sesion','transaccion','users'));
     }
 
     /**
@@ -37,6 +57,35 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'nombre_cliente' => 'required|max:50',
+            'apellido_paterno_cliente' => 'max:50',
+            'apellido_materno_cliente' => 'max:50',
+            'email' => 'required|email',
+            'telefono' => 'integer|digits:10',
+            'direccion' => 'required',
+            'referencia_ubicacion' => 'required',
+        ];
+
+        // Define mensajes personalizados para los errores
+        $messages = [
+            'nombre_cliente.required' => 'El campo Nombre del Cliente es obligatorio.',
+            'nombre_cliente.max' => 'El campo Nombre del Cliente no puede tener más de 50 caracteres.',
+            'apellido_paterno_cliente.max' => 'El campo Apellido Paterno no puede tener más de 50 caracteres.',
+            'apellido_materno_cliente.max' => 'El campo Apellido Materno no puede tener más de 50 caracteres.',
+            'email.required' => 'El campo Email es obligatorio.',
+            'email.email' => 'El campo Email debe ser un correo electrónico válido.',
+            'telefono.max' => 'El campo Teléfono no puede tener más de 10 dígitos.',
+            'telefono.numeric' => 'El campo Teléfono debe ser un valor numérico.',
+        ];
+        // Realiza la validación
+        $request->validate($rules, $messages);
+
+            // Define las reglas de validación
+
+
+
+
         $cliente = new Cliente();
         $cliente->id = $request->input('cliente_id');
         $cliente->nombre_cliente = $request->input('nombre_cliente');
@@ -84,11 +133,6 @@ class ClienteController extends Controller
             'email' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
-            'equipo_id' => 'required',
-            'sesion_id' => 'required',
-            'transaccion_id' => 'required',
-            'contrato_id' => 'required',
-            'users_id' => 'required',
             'referencia_ubicacion'=> 'required',
         ]);
 
@@ -104,12 +148,6 @@ class ClienteController extends Controller
         $cliente->email = $request->input('email');
         $cliente->telefono = $request->input('telefono');
         $cliente->direccion = $request->input('direccion');
-        $cliente->equipo_id = $request->input('equipo_id');
-        $cliente->sesion_id = $request->input('sesion_id');
-        $cliente->transaccion_id = $request->input('transaccion_id');
-        $cliente->contrato_id = $request->input('contrato_id');
-        $cliente->users_id = $request->input('users_id');
-        $cliente->referencia_ubicacion = $request->input('referencia_ubicacion');
         $cliente->save();
 
         return redirect('/cliente')->with('success', 'Cliente updated successfully');

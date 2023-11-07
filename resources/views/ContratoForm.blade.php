@@ -5,12 +5,15 @@
 @endif
 
 <div class="col-md-6">
-    {{ Form::label('contrato_id', 'ID del Contrato', ['class' => 'form-label']) }}
-    {{ Form::text('contrato_id', $contrato->contrato_id ?? old('contrato_id'), ['class' => 'form-control', 'id' => 'contrato_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
+    @if (!isset($contrato))
+        {{ Form::label('contrato_id', 'ID del Contrato', ['class' => 'form-label']) }}
+        {{ Form::text('contrato_id', null, ['class' => 'form-control', 'contrato_id' => 'contrato_id', 'required' => 'required']) }}
+        <div class="valid-feedback">
+            ¡Se ve bien!
+        </div>
+    @endif
 </div>
+
 
 <div class="col-md-6">
     {{ Form::label('fecha_inicio_contrato', 'Fecha de Inicio del Contrato', ['class' => 'form-label']) }}

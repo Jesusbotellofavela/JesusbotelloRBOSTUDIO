@@ -16,10 +16,17 @@
             <p class="card-text"><strong>Descripcion del equipo:</strong> ${{$equipo->descripcion}}</p>
             <p class="card-text"><strong>Precio del equipo:</strong> ${{$equipo->precio}}</p>
         </div>
+
+
         <div class="card-footer">
-            <a href="/delete/{{$equipo->id}}" class="btn btn-danger">Eliminar</a>
-            <a href="/edit/{{$equipo->id}}/edit" class="btn btn-secondary">Editar</a>
-            <a href="{{ route('listadoEquipo.pdf') }}" class="btn btn-primary">PDF</a>
+        <div class="btn-group">
+            <a href="{{ route('equipo.edit', $equipo->id) }}" class="btn btn-primary mr-2">Editar</a>
+            <form method="POST" action="{{ route('equipo.destroy', $equipo->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar este equipo?')">Eliminar</button>
+        </form>
+        </div>
             <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
         </div>
     </div>

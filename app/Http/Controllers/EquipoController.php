@@ -20,9 +20,19 @@ class EquipoController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $equipo = Equipo::all();
+        $query = $request->input('query'); // Obtén el término de búsqueda del formulario
+
+        if ($query) {
+            // Si se proporciona un término de búsqueda, realiza la búsqueda con Scout
+            $equipo = Equipo::search($query)->get();
+            return view('EquipoSearch', compact('equipo')); // Redirige a la vista de resultados de búsqueda
+        } else {
+            // Si no se proporciona un término de búsqueda, carga todos los equipos
+            $equipo = Equipo::all();
+        }
+
         return view('EquipoIndex', compact('equipo'));
     }
 
@@ -39,6 +49,28 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'nombre' => 'required|max:50',
+            'cantidad_disponible' => 'required|integer',
+            'descripcion' => 'max:300',
+            'precio' => 'numeric|min:0.00001|max:99999.99',
+        ];
+
+        // Define mensajes personalizados para los errores
+        $messages = [
+            'nombre.required' => 'El campo Nombre es obligatorio.',
+            'nombre.max' => 'El campo Nombre no puede tener más de 50 caracteres.',
+            'cantidad_disponible.required' => 'El campo Cantidad Disponible es obligatorio.',
+            'cantidad_disponible.integer' => 'El campo Cantidad Disponible debe ser un valor numérico entero.',
+            'descripcion.max' => 'El campo Descripción no puede tener más de 300 caracteres.',
+            'precio.numeric' => 'El campo Precio debe ser un valor numérico.',
+            'precio.min' => 'El campo Precio debe ser igual o mayor a 0.00001.',
+            'precio.max' => 'El campo Precio debe ser menor o igual a 99999.99.',
+        ];
+
+        // Realiza la validación
+        $request->validate($rules, $messages);
+
         $equipo = new Equipo();
         $equipo->id = $request->input('equipo_id');
         $equipo->nombre = $request->input('nombre');

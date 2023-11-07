@@ -4,12 +4,18 @@
     {{ Form::hidden('_method', 'PUT') }}
 @endif
 <div class="col-md-6">
-    {{ Form::label('cliente_id', 'Cliente ID:', ['class' => 'form-label']) }}
-    {{ Form::text('cliente_id', $cliente->cliente_id ?? old('cliente_id'), ['class' => 'form-control', 'id' => 'cliente_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
+    @if (!isset($cliente))
+        {{ Form::label('cliente_id', 'Cliente ID:', ['class' => 'form-label']) }}
+        {{ Form::text('cliente_id', old('cliente_id'), ['class' => 'form-control', 'cliente_id' => 'id', 'required' => 'required']) }}
+        <div class="valid-feedback">
+            ¡Se ve bien!
+        </div>
+    @else
+        {{ Form::hidden('cliente_id', $cliente->id) }}
+    @endif
 </div>
+
+
 
 <div class="col-md-6">
     {{ Form::label('nombre_cliente', 'Nombre del Cliente:', ['class' => 'form-label']) }}
@@ -54,47 +60,6 @@
 <div class="col-md-6">
     {{ Form::label('direccion', 'Dirección:', ['class' => 'form-label']) }}
     {{ Form::text('direccion', $cliente->direccion ?? old('direccion'), ['class' => 'form-control', 'id' => 'direccion', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
-</div>
-
-
-<div class="col-md-6">
-    {{ Form::label('equipo_id', 'Equipo ID:', ['class' => 'form-label']) }}
-    {{ Form::text('equipo_id', $cliente->equipo_id ?? old('equipo_id'), ['class' => 'form-control', 'id' => 'equipo_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
-</div>
-
-<div class="col-md-6">
-    {{ Form::label('sesion_id', 'Sesión ID:', ['class' => 'form-label']) }}
-    {{ Form::text('sesion_id', $cliente->sesion_id ?? old('sesion_id'), ['class' => 'form-control', 'id' => 'sesion_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
-</div>
-
-<div class="col-md-6">
-    {{ Form::label('transaccion_id', 'Transacción ID:', ['class' => 'form-label']) }}
-    {{ Form::text('transaccion_id', $cliente->transaccion_id ?? old('transaccion_id'), ['class' => 'form-control', 'id' => 'transaccion_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
-</div>
-
-<div class="col-md-6">
-    {{ Form::label('contrato_id', 'Contrato ID:', ['class' => 'form-label']) }}
-    {{ Form::text('contrato_id', $cliente->contrato_id ?? old('contrato_id'), ['class' => 'form-control', 'id' => 'contrato_id', 'required' => 'required']) }}
-    <div class="valid-feedback">
-        ¡Se ve bien!
-    </div>
-</div>
-
-<div class="col-md-6">
-    {{ Form::label('users_id', 'Users ID:', ['class' => 'form-label']) }}
-    {{ Form::text('users_id', $cliente->users_id ?? old('users_id'), ['class' => 'form-control', 'id' => 'users_id', 'required' => 'required']) }}
     <div class="valid-feedback">
         ¡Se ve bien!
     </div>

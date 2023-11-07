@@ -9,9 +9,8 @@ use Barryvdh\DomPDF\Facade\pdf as PDF;
 
 class SesionController extends Controller
 {
-
-
-    public function pdf() {
+    public function pdf()
+    {
         $sesion = Sesiones::all();
         $pdf = PDF::loadView('pdf.listadoSesion', compact('sesion'));
         return $pdf->download('listadoSesion.pdf');
@@ -19,25 +18,54 @@ class SesionController extends Controller
     }
 
 
-     public function index()
+    public function index(Request $request)
     {
-        $sesion = Sesiones::all();
+        $query = $request->input('query'); // Obtén el término de búsqueda del formulario
+
+        if ($query) {
+            // Si se proporciona un término de búsqueda, realiza la búsqueda con Scout
+            $sesion = Sesiones::search($query)->get();
+            return view('SesionSearch', compact('sesion')); // Redirige a la vista de resultados
+        } else {
+            // Si no se proporciona un término de búsqueda, carga todos los registros de sesiones
+            $sesion = Sesiones::all();
+        }
+
         return view('SesionIndex', compact('sesion'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
+        //
         return view('sesioncreate');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
     public function store(Request $request)
     {
+            // Define las reglas de validación
+    $rules = [
+        'fecha_inicio' => 'required|date',
+        'descripcion_sesion' => 'max:500',
+        'fecha_fin' => 'required|date|after:fecha_inicio',
+    ];
+
+    // Define mensajes personalizados para los errores
+    $messages = [
+        'fecha_inicio.required' => 'El campo Fecha de Inicio es obligatorio.',
+        'fecha_inicio.date' => 'El campo Fecha de Inicio debe ser una fecha válida.',
+        'descripcion_sesion.max' => 'La Descripción de la Sesión no debe exceder los 500 caracteres.',
+        'fecha_fin.required' => 'El campo Fecha de Fin es obligatorio.',
+        'fecha_fin.date' => 'El campo Fecha de Fin debe ser una fecha válida.',
+        'fecha_fin.after' => 'La Fecha de Fin debe ser posterior a la Fecha de Inicio.',
+    ];
+
+    // Realiza la validación
+    $request->validate($rules, $messages);
+
+
         $sesion = new Sesiones();
         $sesion->id = $request->input('sesion_id');
         $sesion->fecha_inicio = $request->input('fecha_inicio');

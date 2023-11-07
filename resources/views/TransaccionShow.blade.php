@@ -15,10 +15,20 @@
             <p class="card-text"><strong>Monto de la transacción $:</strong> ${{$transaccion->monto}}</p>
             <p class="card-text"><strong>Fecha de la transacción:</strong> {{$transaccion->fecha_transaccion}}</p>
         </div>
+
+
         <div class="card-footer">
-            <a href="/delete/{{$transaccion->id}}" class="btn btn-danger">Eliminar</a>
-            <a href="/edit/{{$transaccion->id}}/edit" class="btn btn-secondary">Editar</a>
-            <a href="{{ route('listadoTransaccion.pdf') }}" class="btn btn-primary">PDF</a>
+        <div class="btn-group">
+        <a href="/transaccion/{{$transaccion->id}}/edit" class="btn btn-primary mr-2">Editar</a>
+        <form method="POST" action="{{ route('transaccion.destroy', $transaccion->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar esta transaccion?')">Eliminar</button>
+            </form>
+    </div>
+</div>
+
+
             <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
         </div>
     </div>

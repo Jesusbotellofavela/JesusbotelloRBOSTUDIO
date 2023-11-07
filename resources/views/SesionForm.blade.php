@@ -4,21 +4,32 @@
     {{ Form::hidden('_method', 'PUT') }}
 @endif
 
-    <div class="col-md-6">
+<div class="col-md-6">
+    @if (!isset($sesion))
         {{ Form::label('sesion_id', 'ID de Sesión:', ['class' => 'form-label']) }}
-        {{ Form::text('sesion_id', $sesion->sesion_id ?? old('sesion_id'), ['class' => 'form-control', 'id' => 'sesion_id', 'required' => 'required']) }}
-        <div class="valid-feedback"></div>
-    </div>
+        {{ Form::text('sesion_id', old('sesion_id'), ['class' => 'form-control', 'sesion_id' => 'id', 'required' => 'required']) }}
+        <div class="valid-feedback">¡Se ve bien!</div>
+    @else
+        {{ Form::hidden('sesion_id', $sesion->id) }}
+    @endif
+</div>
+
+
+
     <div class="col-md-6">
         {{ Form::label('fecha_inicio', 'Fecha de Inicio:', ['class' => 'form-label']) }}
         {{ Form::text('fecha_inicio', $sesion->fecha_inicio ?? old('fecha_inicio'), ['class' => 'form-control', 'id' => 'fecha_inicio', 'required' => 'required']) }}
         <div class="valid-feedback"></div>
     </div>
+
+
     <div class="col-md-6">
         {{ Form::label('descripcion_sesion', 'Descripción de la Sesión:', ['class' => 'form-label']) }}
         {{ Form::text('descripcion_sesion', $sesion->descripcion_sesion ?? old('descripcion_sesion'), ['class' => 'form-control', 'id' => 'descripcion_sesion', 'required' => 'required']) }}
         <div class="valid-feedback"></div>
     </div>
+
+
     <div class="col-md-6">
         {{ Form::label('fecha_fin', 'Fecha de Finalización:', ['class' => 'form-label']) }}
         {{ Form::text('fecha_fin', $sesion->fecha_fin ?? old('fecha_fin'), ['class' => 'form-control', 'id' => 'fecha_fin', 'required' => 'required']) }}

@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-lg-8">
+        <a href="javascript:window.history.back()" class="btn btn-secondary">Regresar</a>
             <div class="card custom-card">
                 <div class="card-header">{{ __('Registro') }}</div>
                 <div class="card-body py-5 px-md-5">

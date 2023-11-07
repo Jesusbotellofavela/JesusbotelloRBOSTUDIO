@@ -21,10 +21,19 @@ class ContratoController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $contrato = Contrato::all();
+        $query = $request->input('query'); // Obtén el término de búsqueda del formulario
+
+        if ($query) {
+            // Si se proporciona un término de búsqueda, realiza la búsqueda con Scout
+            $contrato = Contrato::search($query)->get();
+            return view('ContratoSearch', compact('contrato')); // Redirige a la vista de resultados
+        } else {
+            // Si no se proporciona un término de búsqueda, carga todos los contratos
+            $contrato = Contrato::all();
+        }
+
         return view('ContratoIndex', compact('contrato'));
     }
 
@@ -42,7 +51,26 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Define las reglas de validación
+    $rules = [
+        'fecha_inicio_contrato' => 'required|date',
+        'fecha_fin_contrato' => 'required|date|after:fecha_inicio_contrato',
+        'precio' => 'required|numeric|min:0.000001|max:999999.99',
+    ];
+
+    // Define mensajes personalizados para los errores
+    $messages = [
+        'fecha_inicio_contrato.required' => 'El campo Fecha de Inicio del Contrato es obligatorio.',
+        'fecha_fin_contrato.required' => 'El campo Fecha de Finalización del Contrato es obligatorio.',
+        'fecha_fin_contrato.after' => 'La Fecha de Finalización debe ser posterior a la Fecha de Inicio.',
+        'precio.required' => 'El campo Precio es obligatorio.',
+        'precio.numeric' => 'El campo Precio debe ser un valor numérico.',
+        'precio.min' => 'El campo Precio debe ser igual o mayor a 0.000001.',
+        'precio.max' => 'El campo Precio debe ser menor o igual a 999999.99.',
+    ];
+
+    // Realiza la validación
+    $request->validate($rules, $messages);
 
         $contrato = new Contrato();
         $contrato -> id = $request -> input('contrato_id');

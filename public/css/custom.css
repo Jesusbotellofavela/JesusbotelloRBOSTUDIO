@@ -52,3 +52,32 @@
 .navbar .dropdown-menu .dropdown-item:hover {
     color: #4b4609cb; /* Color naranja */
 }
+
+
+/* FORMULARIO DE BUSQUEDA */
+
+
+/* Estilo para el formulario de búsqueda */
+.search-form {
+   /* text-align: center;*/
+    margin: 20px; /* Margen en todos los lados del formulario */
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+    background-color: #007BFF; /* Cambia el color de fondo del botón */
+    color: white; /* Cambia el color del texto del botón */
+    padding: 10px 20px; /* Añade espacio alrededor del texto del botón */
+    border: none; /* Quita el borde del botón */
+    border-radius: 5px; /* Añade bordes redondeados al botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Estilo para el botón de búsqueda al pasar el cursor sobre él */
+.search-button:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor */
+}
+
+
+
+

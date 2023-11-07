@@ -18,9 +18,19 @@ class TransaccionController extends Controller
 
 
 
-     public function index()
+     public function index(Request $request)
     {
-        $transaccion = Transacciones::all();
+        $query = $request->input('query'); // Obtén el término de búsqueda del formulario
+
+        if ($query) {
+            // Si se proporciona un término de búsqueda, realiza la búsqueda con Scout
+            $transaccion = Transacciones::search($query)->get();
+            return view('TransaccionSearch', compact('transaccion')); // Redirige a la vista de resultados
+        } else {
+            // Si no se proporciona un término de búsqueda, carga todos las transacciones
+            $transaccion = Transacciones::all();
+        }
+
         return view('TransaccionIndex', compact('transaccion'));
     }
 
@@ -37,6 +47,28 @@ class TransaccionController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'tipo_transaccion' => 'required|string',
+            'monto' => 'required|numeric|between:0.00001,99999.99',
+            'fecha_transaccion' => 'required|date',
+        ];
+
+        // Define mensajes personalizados para los errores
+        $messages = [
+            'tipo_transaccion.required' => 'El campo Tipo de Transacción es obligatorio.',
+            'tipo_transaccion.string' => 'El campo Tipo de Transacción debe ser un valor de texto.',
+            'monto.required' => 'El campo Monto es obligatorio.',
+            'monto.numeric' => 'El campo Monto debe ser un valor numérico.',
+            'monto.between' => 'El campo Monto debe estar entre 0.00001 y 99999.99.',
+            'fecha_transaccion.required' => 'El campo Fecha de Transacción es obligatorio.',
+            'fecha_transaccion.date' => 'El campo Fecha de Transacción debe ser una fecha válida.',
+        ];
+
+        // Realiza la validación
+        $request->validate($rules, $messages);
+
+
+
         $transaccion = new Transacciones();
         $transaccion->id = $request->input('transaccion_id');
         $transaccion->tipo_transaccion = $request->input('tipo_transaccion');

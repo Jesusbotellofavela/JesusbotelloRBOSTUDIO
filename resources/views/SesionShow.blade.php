@@ -13,12 +13,25 @@
             <p class="card-text"><strong>ID de la sesion:</strong> {{$sesion->id}}</p>
             <p class="card-text"><strong>Fecha de inicio de la sesion:</strong> {{$sesion->fecha_inicio}}</p>
             <p class="card-text"><strong>Descripcion de la sesion:</strong> {{$sesion->descripcion_sesion}}</p>
-            <p class="card-text"><strong>Fecha de finalizacion de la sesion:</strong> ${{$sesion->fecha_fin}}</p>
+            <p class="card-text"><strong>Fecha de finalizacion de la sesion:</strong> {{$sesion->fecha_fin}}</p>
         </div>
+
+
         <div class="card-footer">
-            <a href="/delete/{{$sesion->id}}" class="btn btn-danger">Eliminar</a>
-            <a href="/edit/{{$sesion->id}}/edit" class="btn btn-secondary">Editar</a>
-            <a href="{{ route('listadoSesion.pdf') }}" class="btn btn-primary">PDF</a>
+        <div class="btn-group">
+        <a href="/sesion/{{ $sesion->id }}/edit" class="btn btn-primary mr-2">Editar</a>
+        <form method="POST" action="{{ route('sesion.destroy', $sesion->id) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger " onclick="return confirm('Seguro que quieres eliminar esta sesion?')">Eliminar </button>
+            </form>
+    </div>
+</div>
+
+
+
+
+
             <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
         </div>
     </div>
