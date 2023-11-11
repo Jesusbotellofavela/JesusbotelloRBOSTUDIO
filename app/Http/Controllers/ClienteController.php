@@ -86,6 +86,7 @@ class ClienteController extends Controller
 
 
 
+
         $cliente = new Cliente();
         $cliente->id = $request->input('cliente_id');
         $cliente->nombre_cliente = $request->input('nombre_cliente');
@@ -148,6 +149,7 @@ class ClienteController extends Controller
         $cliente->email = $request->input('email');
         $cliente->telefono = $request->input('telefono');
         $cliente->direccion = $request->input('direccion');
+        $cliente->referencia_ubicacion = $request->input('referencia_ubicacion');
         $cliente->save();
 
         return redirect('/cliente')->with('success', 'Cliente updated successfully');

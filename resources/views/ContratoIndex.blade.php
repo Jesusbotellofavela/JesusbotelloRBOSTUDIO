@@ -22,10 +22,15 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow">
                 <div class="card-body">
-                    <p class="card-text"><strong>ID del Contrato:</strong> {{$contrato->id}}</p>
+
                     <p class="card-text"><strong>Fecha de Inicio:</strong> {{$contrato->fecha_inicio_contrato}}</p>
                     <p class="card-text"><strong>Fecha de Finalización:</strong> {{$contrato->fecha_fin_contrato}}</p>
                     <p class="card-text"><strong>Monto: $</strong>{{$contrato->precio}}</p>
+                    <p class="card-text"><strong>Dirección del comienzo del evento:</strong> {{$contrato->direccion_evento}}</p>
+                    <p class="card-text"><strong>Descripcion del evento:</strong> {{$contrato->descripcion_evento}}</p>
+
+
+
                     <div class="text-center">
                         <a href="/contrato/{{$contrato->id}}" class="btn btn-secondary mr-2">Mostrar</a>
                         <a href="/contrato/{{$contrato->id}}/edit" class="btn btn-primary mr-2">Editar</a>

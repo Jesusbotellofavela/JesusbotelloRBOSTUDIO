@@ -74,6 +74,7 @@ class TransaccionController extends Controller
         $transaccion->tipo_transaccion = $request->input('tipo_transaccion');
         $transaccion->monto = $request->input('monto');
         $transaccion->fecha_transaccion = $request->input('fecha_transaccion');
+        $transaccion->motivo_transaccion = $request->input('motivo_transaccion');
         $transaccion->save();
         return redirect('/transaccion');
     }
@@ -104,6 +105,7 @@ class TransaccionController extends Controller
             'tipo_transaccion' => 'required',
             'monto' => 'required',
             'fecha_transaccion' => 'required',
+            'motivo_transaccion' => 'required',
         ]);
 
         $transaccion = Transacciones::find($id);
@@ -115,6 +117,7 @@ class TransaccionController extends Controller
         $transaccion->tipo_transaccion = $request->input('tipo_transaccion');
         $transaccion->monto = $request->input('monto');
         $transaccion->fecha_transaccion = $request->input('fecha_transaccion');
+        $transaccion->motivo_transaccion = $request->input('motivo_transaccion');
         $transaccion->save();
 
         return redirect('/transaccion')->with('success', 'Transacción actualizada exitosamente');

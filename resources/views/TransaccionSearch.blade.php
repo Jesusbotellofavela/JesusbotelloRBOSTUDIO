@@ -14,6 +14,7 @@
             <th>Tipo de Transacción</th>
             <th>Monto</th>
             <th>Fecha de Transaccion</th>
+            <th>Motivo de la Transaccion</th>
 
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                 <td>{{ $transaccion->tipo_transaccion}}</td>
                 <td>{{ $transaccion->monto }}</td>
                 <td>{{ $transaccion->fecha_transaccion }}</td>
+                <td>{{ $transaccion->motivo_transaccion}}</td>
                 </tr>
                 @endforeach
             </tbody>

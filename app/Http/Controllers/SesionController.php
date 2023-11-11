@@ -71,6 +71,8 @@ class SesionController extends Controller
         $sesion->fecha_inicio = $request->input('fecha_inicio');
         $sesion->descripcion_sesion = $request->input('descripcion_sesion');
         $sesion->fecha_fin = $request->input('fecha_fin');
+        $sesion->direccion_sesion = $request->input('direccion_sesion');
+        $sesion->hora_sesion= $request->input('hora_sesion');
         $sesion->save();
         return redirect('/sesion');
     }
@@ -101,6 +103,8 @@ class SesionController extends Controller
             'fecha_inicio' => 'required',
             'descripcion_sesion' => 'required',
             'fecha_fin' => 'required',
+            'direccion_sesion' => 'required',
+            'hora_sesion' => 'required',
         ]);
 
         $sesion = Sesiones::find($id);
@@ -112,6 +116,8 @@ class SesionController extends Controller
         $sesion->fecha_inicio = $request->input('fecha_inicio');
         $sesion->descripcion_sesion = $request->input('descripcion_sesion');
         $sesion->fecha_fin = $request->input('fecha_fin');
+        $sesion->direccion_sesion = $request->input('direccion_sesion');
+        $sesion->hora_sesion= $request->input('hora_sesion');
         $sesion->save();
 
         return redirect('/sesion')->with('success', 'Sesión updated successfully');

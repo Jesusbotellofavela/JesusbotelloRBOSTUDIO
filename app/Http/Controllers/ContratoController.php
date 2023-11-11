@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Contrato;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\pdf as PDF;
@@ -51,11 +53,13 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-         // Define las reglas de validación
+    // Define las reglas de validación
     $rules = [
         'fecha_inicio_contrato' => 'required|date',
         'fecha_fin_contrato' => 'required|date|after:fecha_inicio_contrato',
         'precio' => 'required|numeric|min:0.000001|max:999999.99',
+        'direccion_evento' => 'required',
+        'descripcion_evento' => 'required',
     ];
 
     // Define mensajes personalizados para los errores
@@ -67,6 +71,8 @@ class ContratoController extends Controller
         'precio.numeric' => 'El campo Precio debe ser un valor numérico.',
         'precio.min' => 'El campo Precio debe ser igual o mayor a 0.000001.',
         'precio.max' => 'El campo Precio debe ser menor o igual a 999999.99.',
+        'direccion_evento.required' => 'El campo Dirección del Evento es obligatorio.',
+        'descripcion_evento.required' => 'El campo Descripción del Evento es obligatorio.',
     ];
 
     // Realiza la validación
@@ -77,6 +83,9 @@ class ContratoController extends Controller
         $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
         $contrato -> fecha_fin_contrato = $request -> input('fecha_fin_contrato');
         $contrato -> precio = $request -> input('precio');
+        $contrato -> direccion_evento = $request -> input('direccion_evento');
+        $contrato -> descripcion_evento = $request -> input('descripcion_evento');
+        //$contrato->cliente_id = $request->input('cliente_id');
         $contrato -> save();
         return redirect('/contrato');
         //return("guardado");
@@ -111,6 +120,8 @@ class ContratoController extends Controller
         'fecha_inicio_contrato' => 'required',
         'fecha_fin_contrato' => 'required',
         'precio' => 'required',
+        'direccion_evento' => 'required',
+        'descripcion_evento' => 'required',
     ]);
 
     // Obtener el contrato a actualizar
@@ -125,6 +136,8 @@ class ContratoController extends Controller
     $contrato->fecha_inicio_contrato = $request->input('fecha_inicio_contrato');
     $contrato->fecha_fin_contrato = $request->input('fecha_fin_contrato');
     $contrato->precio = $request->input('precio');
+    $contrato -> direccion_evento = $request -> input('direccion_evento');
+    $contrato -> descripcion_evento = $request -> input('descripcion_evento');
     $contrato->save();
 
     return redirect('/contrato')->with('success', 'Contrato updated successfully');

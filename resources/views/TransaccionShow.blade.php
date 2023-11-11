@@ -14,6 +14,7 @@
             <p class="card-text"><strong>Tipo de transacción:</strong> {{$transaccion->tipo_transaccion}}</p>
             <p class="card-text"><strong>Monto de la transacción $:</strong> ${{$transaccion->monto}}</p>
             <p class="card-text"><strong>Fecha de la transacción:</strong> {{$transaccion->fecha_transaccion}}</p>
+            <p class="card-text"><strong>Motivo de la Transacción:</strong> {{$transaccion->motivo_transaccion}}</p>
         </div>
 
 

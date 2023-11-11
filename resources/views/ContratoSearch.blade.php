@@ -14,6 +14,8 @@
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Precio</th>
+                    <th> Direccion del evento</th>
+                    <th> Descripcion del evento</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +25,9 @@
                         <td>{{ $contrato->fecha_inicio_contrato }}</td>
                         <td>{{ $contrato->fecha_fin_contrato }}</td>
                         <td>{{ $contrato->precio }}</td>
+                        <td>{{ $contrato->direccion_evento}}</td>
+                        <td>{{ $contrato->descripcion_evento}}</td>
+
                     </tr>
                 @endforeach
             </tbody>

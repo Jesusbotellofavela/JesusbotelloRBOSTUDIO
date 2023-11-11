@@ -14,6 +14,8 @@
             <p class="card-text"><strong>Fecha de inicio de la sesion:</strong> {{$sesion->fecha_inicio}}</p>
             <p class="card-text"><strong>Descripcion de la sesion:</strong> {{$sesion->descripcion_sesion}}</p>
             <p class="card-text"><strong>Fecha de finalizacion de la sesion:</strong> {{$sesion->fecha_fin}}</p>
+            <p class="card-text"><strong>Dirección para la Sesión: </strong>{{ $sesion->direccion_sesion }}</p>
+            <p class="card-text"><strong>Hora de la Sesión: </strong>{{ $sesion->hora_sesion }}</p>
         </div>
 
 

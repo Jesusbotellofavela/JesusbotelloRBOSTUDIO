@@ -65,6 +65,8 @@
             <th>Fecha de la sesión</th>
             <th>Descripción de la sesión</th>
             <th>Fecha de finalización de la sesión</th>
+            <th>Dirección para la sesión</th>
+            <th>Hora de la sesión</th>
 
         </tr>
     </thead>
@@ -75,6 +77,8 @@
                 <td>{{ $sesion->fecha_inicio }}</td>
                 <td>{{ $sesion->descripcion_sesion }}</td>
                 <td>{{ $sesion->fecha_fin}}</td>
+                <td>{{ $sesion->direccion_sesion}}</td>
+                <td>{{ $sesion->hora_sesion}}</td>
 
 
 

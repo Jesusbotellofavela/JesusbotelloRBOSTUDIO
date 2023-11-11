@@ -25,7 +25,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow">
                 <div class="card-body">
-                    <p class="card-text"><strong>ID del cliente:</strong> {{ $cliente->id }}</p>
+
                     <p class="card-text"><strong>Nombre:</strong> {{ $cliente->nombre_cliente }}</p>
                     <p class="card-text"><strong>Apellido paterno:</strong> {{ $cliente->apellido_paterno_cliente }}</p>
                     <p class="card-text"><strong>Apellido Materno:</strong> {{ $cliente->apellido_materno_cliente }}</p>

@@ -34,5 +34,26 @@ class Cliente extends Model
         return $this->belongsTo('App\Models\User', 'users_id');
     }
 
+    public function ContratoH()
+    {
+        return $this->hasMany('App\Models\Contrato', 'contrato_id');
+    }
+    public function EquipoH()
+    {
+        return $this->hasMany('App\Models\Equipo', 'equipo_id');
+    }
+    public function SesionesH()
+    {
+        return $this->hasMany('App\Models\Sesiones', 'sesiones_id');
+    }
+    public function TransaccionesH()
+    {
+        return $this->hasMany('App\Models\Transacciones', 'transacciones_id');
+    }
+    public function UserH()
+    {
+        return $this->hasMany('App\Models\User', 'users_id');
+    }
+
 
 }

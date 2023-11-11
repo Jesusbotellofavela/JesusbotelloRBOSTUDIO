@@ -14,6 +14,10 @@
             <p class="card-text"><strong>Fecha de inicio del contrato:</strong> {{$contrato->fecha_inicio_contrato}}</p>
             <p class="card-text"><strong>Fecha de finalización del contrato:</strong> {{$contrato->fecha_fin_contrato}}</p>
             <p class="card-text"><strong>Costo del contrato:</strong> ${{$contrato->precio}}</p>
+            <p class="card-text"><strong>Direccion del evento:</strong> {{$contrato->direccion_evento}}</p>
+            <p class="card-text"><strong>Descripción del evento:</strong> {{$contrato->descripcion_evento}}</p>
+
+
         </div>
         <div class="card-footer">
         <div class="btn-group">

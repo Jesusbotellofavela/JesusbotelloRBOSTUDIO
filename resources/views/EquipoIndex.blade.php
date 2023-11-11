@@ -26,7 +26,7 @@
                 <div class="card shadow">
 
                     <div class="card-body">
-                    <p class="card-text"><strong>ID de equipo:</strong> {{$equipo->id}}</p>
+
                     <p class="card-text"><strong>Nombre del equipo:</strong> {{$equipo->nombre}}</p>
                     <p class="card-text"><strong>Cantidad disponible:</strong> {{$equipo->cantidad_disponible}}</p>
                     <p class="card-text"><strong>Descripción del equipo:</strong> {{$equipo->descripcion}}</p>

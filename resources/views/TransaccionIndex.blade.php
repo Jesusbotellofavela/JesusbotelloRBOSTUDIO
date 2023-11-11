@@ -4,7 +4,7 @@
 
 @section('content')
 
-<f method="GET" action="{{ route('transaccion.index') }}"class="search-form">
+<form method="GET" action="{{ route('transaccion.index') }}"class="search-form">
     <input type="text" name="query" placeholder="Término de búsqueda">
     <button type="submit" class="search-button">Buscar</button>
 </form>
@@ -24,10 +24,11 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow">
                     <div class="card-body">
-                        <p class="card-text"><strong>ID de Transacción: </strong>{{$transaccion->id}}</p>
+
                         <p class="card-text"><strong>Tipo de Transacción:</strong> {{$transaccion->tipo_transaccion}}</p>
                         <p class="card-text"><strong>Monto:</strong> ${{$transaccion->monto}}</p>
                         <p class="card-text"><strong>Fecha de Transacción:</strong> {{$transaccion->fecha_transaccion}}</p>
+                        <p class="card-text"><strong>Motivo de la Transacción:</strong> {{$transaccion->motivo_transaccion}}</p>
                         <div class="text-center">
                             <a href="/transaccion/{{$transaccion->id}}" class="btn btn-secondary mr-2">Mostrar</a>
                             <a href="/transaccion/{{$transaccion->id}}/edit" class="btn btn-primary mr-2">Editar</a>

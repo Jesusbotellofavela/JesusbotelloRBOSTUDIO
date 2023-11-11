@@ -13,5 +13,11 @@ class Contrato extends Model
     protected $primaryKey = 'id';
     use Searchable;
 
+    public function Cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'cliente_id');
+    }
+
+
 
 }
