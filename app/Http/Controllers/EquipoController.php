@@ -54,6 +54,7 @@ class EquipoController extends Controller
             'cantidad_disponible' => 'required|integer',
             'descripcion' => 'max:300',
             'precio' => 'numeric|min:0.00001|max:99999.99',
+            'imagen_equipo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         // Define mensajes personalizados para los errores
@@ -66,10 +67,19 @@ class EquipoController extends Controller
             'precio.numeric' => 'El campo Precio debe ser un valor numérico.',
             'precio.min' => 'El campo Precio debe ser igual o mayor a 0.00001.',
             'precio.max' => 'El campo Precio debe ser menor o igual a 99999.99.',
+            'imagen_equipo.image' => 'El archivo debe ser una imagen.',
+            'imagen_equipo.mimes' => 'La imagen debe ser de tipo jpeg, png, jpg o gif.',
+            'imagen_equipo.max' => 'La imagen no debe ser mayor a 2 MB.',
         ];
 
         // Realiza la validación
         $request->validate($rules, $messages);
+
+         // Manejar la carga y almacenamiento de la imagen
+         if ($request->hasFile('imagen_equipo')) {
+            $imageName = time() . '.' . $request->imagen_equipo->extension(); // Cambiar "$request->image" a "$request->imagen_equipo"
+            $request->imagen_equipo->move(public_path('imagen_equipo'), $imageName);
+    }
 
         $equipo = new Equipo();
         $equipo->id = $request->input('equipo_id');
@@ -77,6 +87,7 @@ class EquipoController extends Controller
         $equipo->cantidad_disponible = $request->input('cantidad_disponible');
         $equipo->descripcion = $request->input('descripcion');
         $equipo->precio = $request->input('precio');
+        $equipo->imagen_equipo = $imageName; // Ajusta el nombre del campo según la estructura de tu modelo
         $equipo->save();
         return redirect('/equipo');
     }
@@ -108,6 +119,7 @@ class EquipoController extends Controller
             'cantidad_disponible' => 'required',
             'descripcion' => 'required',
             'precio' => 'required',
+            'imagen_equipo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $equipo = Equipo::find($id);
@@ -120,6 +132,15 @@ class EquipoController extends Controller
         $equipo->cantidad_disponible = $request->input('cantidad_disponible');
         $equipo->descripcion = $request->input('descripcion');
         $equipo->precio = $request->input('precio');
+
+        // Manejar la carga y almacenamiento de la imagen
+       // Dentro del método update de EquipoController
+        if ($request->hasFile('imagen_equipo')) {
+            $imagePath = $request->file('imagen_equipo')->store('equipo');
+            $equipo->imagen_equipo = $imagePath;
+        }
+
+
         $equipo->save();
 
         return redirect('/equipo')->with('success', 'Equipo updated successfully');

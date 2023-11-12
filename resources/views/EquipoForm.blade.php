@@ -4,15 +4,6 @@
     {{ Form::hidden('_method', 'PUT') }}
 @endif
 
-<div class="col-md-6">
-    @if (!isset($equipo))
-        {{ Form::label('equipo_id', 'ID del Equipo', ['class' => 'form-label']) }}
-        {{ Form::text('equipo_id', $equipo->equipo_id ?? old('equipo_id'), ['class' => 'form-control', 'id' => 'equipo_id', 'required' => 'required']) }}
-        <div class="valid-feedback">
-            ¡Se ve bien!
-        </div>
-    @endif
-</div>
 
 
 <div class="col-md-6">
@@ -26,7 +17,6 @@
     @enderror
 </div>
 
-
 <div class="col-md-6">
     {{ Form::label('cantidad_disponible', 'Cantidad Disponible', ['class' => 'form-label']) }}
     {{ Form::text('cantidad_disponible', $equipo->cantidad_disponible ?? old('cantidad_disponible'), ['class' => 'form-control' . ($errors->has('cantidad_disponible') ? ' is-invalid' : '')]) }}
@@ -37,7 +27,6 @@
         </div>
     @enderror
 </div>
-
 
 <div class="col-md-6">
     {{ Form::label('descripcion', 'Descripción', ['class' => 'form-label']) }}
@@ -61,10 +50,22 @@
     @enderror
 </div>
 
+<div class="col-md-6">
+    {{ Form::label('imagen_equipo', 'Imagen del Equipo', ['class' => 'form-label']) }}
+    {{ Form::file('imagen_equipo', ['class' => 'form-control' . ($errors->has('imagen_equipo') ? ' is-invalid' : '')]) }}
 
+    @if(isset($equipo) && $equipo->imagen_equipo)
+        <p>Imagen Actual:</p>
+        <img src="{{ asset('imagen_equipo/' . $equipo->imagen_equipo) }}" alt="Imagen actual del equipo" style="max-width: 200px; max-height: 200px;">
+    @endif
 
+    @error('imagen_equipo')
+        <div class="invalid-feedback" style="color: red;">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
-<script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
 <div class="col-12">
     {{ Form::submit(isset($equipo) ? 'Guardar Cambios' : 'Guardar Equipo', ['class' => 'btn btn-primary']) }}
 </div>

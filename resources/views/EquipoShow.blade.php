@@ -10,6 +10,11 @@
             <h5 class="card-title">{{$equipo->name_product}}</h5>
         </div>
         <div class="card-body">
+             @if($equipo->imagen_equipo)
+                <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
+                        class="card-img-top rounded-circle mx-auto d-block"
+                        src="{{asset ('imagen_equipo/'. $equipo->imagen_equipo) }}" alt="">
+            @endif
             <p class="card-text"><strong>ID del equipo:</strong> {{$equipo->id}}</p>
             <p class="card-text"><strong>Nombre del equipo:</strong> {{$equipo->nombre}}</p>
             <p class="card-text"><strong>Cantidad disponible:</strong> {{$equipo->cantidad_disponible}}</p>

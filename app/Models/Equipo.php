@@ -13,4 +13,10 @@ class Equipo extends Model
 
     protected $primaryKey = 'id';
     use Searchable;
+
+    protected $fillable = [
+
+
+    ];
+
 }

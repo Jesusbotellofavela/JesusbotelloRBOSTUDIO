@@ -15,6 +15,7 @@
             <th>Cantidad disponible</th>
             <th>Descripcion del equipo</th>
             <th>Precio del equipo</th>
+            <th> Imagen del equipo</th>
 
 
         </tr>
@@ -27,6 +28,13 @@
                 <td>{{ $equipo->cantidad_disponible }}</td>
                 <td>{{ $equipo->descripcion }}</td>
                 <td>{{ $equipo->precio }}</td>
+                <td>
+                                @if($equipo->imagen_equipo)
+                                    <img style="height: 50px; width: 50px;" src="{{ asset('imagen_equipo/' . $equipo->imagen_equipo) }}" alt="Imagen del equipo">
+                                @else
+                                    No hay imagen disponible
+                                @endif
+                            </td>
                 </tr>
                 @endforeach
             </tbody>

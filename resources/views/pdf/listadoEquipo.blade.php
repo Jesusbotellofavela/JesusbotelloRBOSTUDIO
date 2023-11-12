@@ -61,21 +61,26 @@
     <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th>ID de equipo</th>
                 <th>Nombre del equipo</th>
                 <th>Cantidad disponible</th>
                 <th>Descripción del equipo</th>
                 <th>Precio del equipo</th>
+                <th>Imagen del equipo</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($equipo as $equipo)
                 <tr>
-                    <td>{{ $equipo->id }}</td>
                     <td>{{ $equipo->nombre }}</td>
                     <td>{{ $equipo->cantidad_disponible }}</td>
                     <td>{{ $equipo->descripcion }}</td>
                     <td>{{ $equipo->precio }}</td>
+                    <td>
+                        @if($equipo->imagen_equipo)
+                            <img src="{{ public_path('imagen_equipo/' . $equipo->imagen_equipo) }}" alt="Imagen del equipo" style="max-width: 100px;">
+                        @endif
+                    </td>
+
                 </tr>
             @endforeach
         </tbody>
