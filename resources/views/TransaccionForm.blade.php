@@ -5,15 +5,6 @@
 @endif
 
 
-<div class="col-md-6">
-    @if (!isset($transaccion))
-        {{ Form::label('transaccion_id', 'ID de la transacción:', ['class' => 'form-label']) }}
-        {{ Form::text('transaccion_id', old('transaccion_id'), ['class' => 'form-control', 'transaccion_id' => 'transaccion_id', 'required' => 'required']) }}
-        <div class="valid-feedback">¡Se ve bien!</div>
-    @else
-        {{ Form::hidden('transaccion_id', $transaccion->id) }}
-    @endif
-</div>
 
 
 <div class="col-md-6">

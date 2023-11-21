@@ -10,6 +10,7 @@ use Laravel\Scout\Searchable;
 class Sesiones extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
 
     use Searchable;
 }

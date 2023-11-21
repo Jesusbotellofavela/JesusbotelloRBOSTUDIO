@@ -70,7 +70,7 @@ class TransaccionController extends Controller
 
 
         $transaccion = new Transacciones();
-        $transaccion->id = $request->input('transaccion_id');
+
         $transaccion->tipo_transaccion = $request->input('tipo_transaccion');
         $transaccion->monto = $request->input('monto');
         $transaccion->fecha_transaccion = $request->input('fecha_transaccion');

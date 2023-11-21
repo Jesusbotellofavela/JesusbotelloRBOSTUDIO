@@ -88,7 +88,7 @@ class ClienteController extends Controller
 
 
         $cliente = new Cliente();
-        $cliente->id = $request->input('cliente_id');
+
         $cliente->nombre_cliente = $request->input('nombre_cliente');
         $cliente->apellido_paterno_cliente = $request->input('apellido_paterno_cliente');
         $cliente->apellido_materno_cliente = $request->input('apellido_materno_cliente');
@@ -118,9 +118,16 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::find($id);
-        return view('ClientesEdit', compact('cliente'));
+        $cliente = Cliente::findOrFail($id);
+        $equipo = Equipo::all(); // Obtener todos los equipos
+        $sesion = Sesiones::all();
+        $transaccion = Transacciones::all();
+        $contrato = Contrato::all();
+        $users = User::all();
+
+        return view('ClientesEdit', compact('cliente', 'equipo','sesion','transaccion','contrato','users'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -149,6 +156,11 @@ class ClienteController extends Controller
         $cliente->email = $request->input('email');
         $cliente->telefono = $request->input('telefono');
         $cliente->direccion = $request->input('direccion');
+        $cliente->equipo_id = $request->input('equipo_id');
+        $cliente->sesion_id = $request->input('sesion_id');
+        $cliente->transaccion_id = $request->input('transaccion_id');
+        $cliente->contrato_id = $request->input('contrato_id');
+        $cliente->users_id = $request->input('users_id');
         $cliente->referencia_ubicacion = $request->input('referencia_ubicacion');
         $cliente->save();
 

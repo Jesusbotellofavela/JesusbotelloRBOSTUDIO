@@ -79,7 +79,7 @@ class ContratoController extends Controller
     $request->validate($rules, $messages);
 
         $contrato = new Contrato();
-        $contrato -> id = $request -> input('contrato_id');
+
         $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
         $contrato -> fecha_fin_contrato = $request -> input('fecha_fin_contrato');
         $contrato -> precio = $request -> input('precio');

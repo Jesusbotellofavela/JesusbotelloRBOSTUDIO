@@ -82,7 +82,7 @@ class EquipoController extends Controller
     }
 
         $equipo = new Equipo();
-        $equipo->id = $request->input('equipo_id');
+
         $equipo->nombre = $request->input('nombre');
         $equipo->cantidad_disponible = $request->input('cantidad_disponible');
         $equipo->descripcion = $request->input('descripcion');
@@ -135,10 +135,26 @@ class EquipoController extends Controller
 
         // Manejar la carga y almacenamiento de la imagen
        // Dentro del método update de EquipoController
-        if ($request->hasFile('imagen_equipo')) {
-            $imagePath = $request->file('imagen_equipo')->store('equipo');
-            $equipo->imagen_equipo = $imagePath;
+       if ($request->hasFile('imagen_equipo')) {
+        // Validar y guardar la imagen
+        $request->validate([
+            'imagen_equipo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Eliminar la imagen anterior si existe
+        if ($equipo->imagen_equipo) {
+            $imagePath = public_path('imagen_equipo/') . $equipo->imagen_equipo;
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
+
+        $imageName = time() . '.' . $request->imagen_equipo->extension();
+        $request->imagen_equipo->move(public_path('imagen_equipo'), $imageName);
+
+        $equipo->imagen_equipo = $imageName; // Guardar el nombre de la nueva imagen en el modelo
+    }
+
 
 
         $equipo->save();

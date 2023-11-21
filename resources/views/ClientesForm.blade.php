@@ -3,17 +3,6 @@
 @if (isset($cliente))
     {{ Form::hidden('_method', 'PUT') }}
 @endif
-<div class="col-md-6">
-    @if (!isset($cliente))
-        {{ Form::label('cliente_id', 'Cliente ID:', ['class' => 'form-label']) }}
-        {{ Form::text('cliente_id', old('cliente_id'), ['class' => 'form-control', 'cliente_id' => 'id', 'required' => 'required']) }}
-        <div class="valid-feedback">
-            ¡Se ve bien!
-        </div>
-    @else
-        {{ Form::hidden('cliente_id', $cliente->id) }}
-    @endif
-</div>
 
 
 
@@ -72,6 +61,8 @@
         ¡Se ve bien!
     </div>
 </div>
+
+
 
 <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
 <div class="col-12">

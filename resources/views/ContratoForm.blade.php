@@ -4,15 +4,7 @@
     {{ Form::hidden('_method', 'PUT') }}
 @endif
 
-<div class="col-md-6">
-    @if (!isset($contrato))
-        {{ Form::label('contrato_id', 'ID del Contrato', ['class' => 'form-label']) }}
-        {{ Form::text('contrato_id', null, ['class' => 'form-control', 'contrato_id' => 'contrato_id', 'required' => 'required']) }}
-        <div class="valid-feedback">
-            ¡Se ve bien!
-        </div>
-    @endif
-</div>
+
 
 
 <div class="col-md-6">

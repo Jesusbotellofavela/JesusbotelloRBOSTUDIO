@@ -4,17 +4,7 @@
     {{ Form::hidden('_method', 'PUT') }}
 @endif
 
-<div class="col-md-6">
-    @if (!isset($sesion))
-        <div class="form-group">
-            {{ Form::label('sesion_id', 'ID de Sesión:', ['class' => 'form-label']) }}
-            {{ Form::text('sesion_id', old('sesion_id'), ['class' => 'form-control', 'id' => 'id', 'required' => 'required']) }}
-            <div class="valid-feedback">¡Se ve bien!</div>
-        </div>
-    @else
-        {{ Form::hidden('sesion_id', $sesion->id) }}
-    @endif
-</div>
+
 
 
 <div class="col-md-6">

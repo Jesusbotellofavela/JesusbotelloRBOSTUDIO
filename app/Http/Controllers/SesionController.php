@@ -67,7 +67,6 @@ class SesionController extends Controller
 
 
         $sesion = new Sesiones();
-        $sesion->id = $request->input('sesion_id');
         $sesion->fecha_inicio = $request->input('fecha_inicio');
         $sesion->descripcion_sesion = $request->input('descripcion_sesion');
         $sesion->fecha_fin = $request->input('fecha_fin');
