@@ -61,7 +61,7 @@
     <table>
     <thead>
         <tr>
-            <th>ID de la sesión</th>
+
             <th>Fecha de la sesión</th>
             <th>Descripción de la sesión</th>
             <th>Fecha de finalización de la sesión</th>
@@ -73,7 +73,7 @@
     <tbody>
         @foreach ($sesion as $sesion)
             <tr>
-                <td>{{ $sesion->id }}</td>
+
                 <td>{{ $sesion->fecha_inicio }}</td>
                 <td>{{ $sesion->descripcion_sesion }}</td>
                 <td>{{ $sesion->fecha_fin}}</td>

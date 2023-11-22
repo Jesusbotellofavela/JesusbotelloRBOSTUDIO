@@ -4,6 +4,8 @@
 
 @section('content')
 
+
+
 <form method="GET" action="{{ route('sesion.index') }}"class="search-form">
     <input type="text" name="query" placeholder="Término de búsqueda">
     <button type="submit" class="search-button">Buscar</button>
@@ -20,7 +22,7 @@
     </div>
 
 
-
+    <script src="{{ asset('resource/js/calendar.js') }}"></script>
 
     <div class="row">
         @foreach ($sesion as $sesion)
@@ -48,6 +50,7 @@
         @endforeach
     </div>
 </div>
+
 @endsection
 
 

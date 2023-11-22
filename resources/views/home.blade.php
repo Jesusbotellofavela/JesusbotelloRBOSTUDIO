@@ -35,7 +35,7 @@
     <br>
 
 
-
+    <div id='calendar'></div>
 
         <!-- Código de instalación Cliengo para jesusbotellofavela@gmail.com -->
         <!-- Código de instalación Cliengo para RBOSTUDIO --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
@@ -43,3 +43,18 @@
 </div>
 @endsection
 
+<!-- USO DEL CALENDARIO -->
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+<script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+@endpush

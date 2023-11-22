@@ -10,7 +10,6 @@
         <table class="table">
             <thead>
             <tr>
-            <th>ID de equipo</th>
             <th>Nombre del equipo</th>
             <th>Cantidad disponible</th>
             <th>Descripcion del equipo</th>
@@ -23,7 +22,6 @@
     <tbody>
         @foreach ($equipo as $equipo)
             <tr>
-                <td>{{ $equipo->id}}</td>
                 <td>{{ $equipo->nombre }}</td>
                 <td>{{ $equipo->cantidad_disponible }}</td>
                 <td>{{ $equipo->descripcion }}</td>

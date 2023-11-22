@@ -61,7 +61,7 @@
     <table>
     <thead>
         <tr>
-            <th>ID de Transaccion</th>
+
             <th>Tipo de Transacción</th>
             <th>Monto</th>
             <th>Fecha de Transaccion</th>
@@ -72,7 +72,7 @@
     <tbody>
         @foreach ($transaccion as $transaccion)
             <tr>
-                <td>{{ $transaccion->id }}</td>
+
                 <td>{{ $transaccion->tipo_transaccion}}</td>
                 <td>{{ $transaccion->monto }}</td>
                 <td>{{ $transaccion->fecha_transaccion }}</td>

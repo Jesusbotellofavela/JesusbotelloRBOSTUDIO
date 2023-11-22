@@ -1,4 +1,3 @@
-import './bootstrap';
 import { Calendar } from '@fullcalendar/core';
 import multiMonthPlugin from '@fullcalendar/multimonth';
 
@@ -13,3 +12,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   calendar.render();
 });
+

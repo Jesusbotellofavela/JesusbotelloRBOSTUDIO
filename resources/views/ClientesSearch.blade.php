@@ -10,7 +10,6 @@
         <table class="table">
             <thead>
                 <tr>
-                <th>ID</th>
             <th>Nombre</th>
             <th>Apellido paterno</th>
             <th>Apellido materno</th>
@@ -25,7 +24,7 @@
     <tbody>
         @foreach ($clientes as $cliente)
             <tr>
-                <td>{{$cliente->id }}</td>
+
                 <td>{{$cliente->nombre_cliente }}</td>
                 <td>{{$cliente->apellido_paterno_cliente}}</td>
                 <td>{{$cliente->apellido_materno_cliente}}</td>

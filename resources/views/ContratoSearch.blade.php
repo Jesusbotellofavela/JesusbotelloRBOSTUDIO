@@ -10,7 +10,6 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Precio</th>
@@ -21,7 +20,6 @@
             <tbody>
                 @foreach ($contrato as $contrato)
                     <tr>
-                        <td>{{ $contrato->id }}</td>
                         <td>{{ $contrato->fecha_inicio_contrato }}</td>
                         <td>{{ $contrato->fecha_fin_contrato }}</td>
                         <td>{{ $contrato->precio }}</td>

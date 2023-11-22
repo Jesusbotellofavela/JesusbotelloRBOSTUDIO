@@ -10,7 +10,10 @@
 <div class="col-md-6">
     <div class="form-group">
         {{ Form::label('fecha_inicio', 'Fecha de Inicio:', ['class' => 'form-label']) }}
-        {{ Form::text('fecha_inicio', $sesion->fecha_inicio ?? old('fecha_inicio'), ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : '')]) }}
+        <div style="position: relative;">
+            {{ Form::text('fecha_inicio', $sesion->fecha_inicio ?? old('fecha_inicio'), ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : ''), 'id' => 'datepicker_inicio']) }}
+            <i class="far fa-calendar-alt" id="icono_calendario_inicio" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+        </div>
 
         @error('fecha_inicio')
             <div class="invalid-feedback" style="color: red;">
@@ -39,7 +42,10 @@
 <div class="col-md-6">
     <div class="form-group">
         {{ Form::label('fecha_fin', 'Fecha de Finalización de la Sesión:', ['class' => 'form-label']) }}
-        {{ Form::text('fecha_fin', $sesion->fecha_fin ?? old('fecha_fin'), ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : '')]) }}
+        <div style="position: relative;">
+            {{ Form::text('fecha_fin', $sesion->fecha_fin ?? old('fecha_fin'), ['class' => 'form-control' . ($errors->has('fecha_fin') ? ' is-invalid' : ''), 'id' => 'datepicker_fin']) }}
+            <i class="far fa-calendar-alt" id="icono_calendario_fin" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+        </div>
         @error('fecha_fin')
             <div class="invalid-feedback" style="color: red;">
                 {{ $message }}
@@ -47,6 +53,7 @@
         @enderror
     </div>
 </div>
+
 
 
 <div class="col-md-6">
@@ -73,6 +80,35 @@
         @enderror
     </div>
 </div>
+
+
+<!-- SCRIPT PARA MINI CALENDARIO -->
+
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI (Datepicker) CDN -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $(document).ready(function() {
+        $("#datepicker_inicio").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $("#datepicker_fin").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
+
+
 
 
 <div class="col-12">
