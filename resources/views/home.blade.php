@@ -53,11 +53,7 @@
 
 <!-- USO DEL CALENDARIO -->
 
-@push('styles') <!-- Definimos una pila para los estilos -->
-    <!-- Incluimos los estilos CSS de FullCalendar y tus estilos personalizados -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/main.css" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" /> <!-- Asegúrate de tener este archivo con tus estilos -->
-@endpush
+
 
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
