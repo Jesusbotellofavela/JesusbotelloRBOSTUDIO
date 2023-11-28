@@ -1,0 +1,7 @@
+/* styles.css */
+.fc-daygrid-day-number {
+    font-size: 18px;
+}
+.fc-daygrid-day.fc-day-header {
+    text-transform: uppercase;
+}

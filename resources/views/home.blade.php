@@ -18,13 +18,14 @@
     <a href="{{ route('sesion.index') }}" class="btn btn-dark">LISTADO DE SESIONES</a>
 </div> --}}
 
+{{--
 <div class="menu-links text-center">
         <a href="{{ route('cliente.create') }}" class="btn btn-dark">AGREGAR CLIENTES</a> <!-- Botón rojo oscuro -->
         <a href="{{ route('contrato.create') }}" class="btn btn-dark">AGREGAR CONTRATOS</a> <!-- Botón naranja oscuro -->
         <a href="{{ route('transaccion.create') }}" class="btn btn-dark">AGREGAR TRANSACCIONES FINANCIERAS</a> <!-- Botón verde oscuro -->
         <a href="{{ route('equipo.create') }}" class="btn btn-dark">AGREGAR EQUIPO FOTOGRAFICO</a> <!-- Botón rojo oscuro -->
         <a href="{{ route('sesion.create') }}" class="btn btn-dark">AGREGAR SESIONES</a> <!-- Botón naranja oscuro -->
-</div>
+</div> --}}
 
 
 
@@ -35,7 +36,14 @@
     <br>
 
 
-    <div id='calendar'></div>
+    <div class="text-center">
+            <!-- Coloca el calendario dentro de un div centrado -->
+            <div style="width: 80%; margin: 0 auto;">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+
 
         <!-- Código de instalación Cliengo para jesusbotellofavela@gmail.com -->
         <!-- Código de instalación Cliengo para RBOSTUDIO --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65404ddb0446800032aa8254/65404ddc0446800032aa8257.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
@@ -44,17 +52,51 @@
 @endsection
 
 <!-- USO DEL CALENDARIO -->
+
+@push('styles') <!-- Definimos una pila para los estilos -->
+    <!-- Incluimos los estilos CSS de FullCalendar y tus estilos personalizados -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/main.css" rel="stylesheet" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" /> <!-- Asegúrate de tener este archivo con tus estilos -->
+@endpush
+
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
 <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar');
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'esLocale',
+        eventColor: '#3788d8',
+        initialView: 'dayGridMonth',
+        views: {
+            timeGridWeek: {
+                locale: 'es',
+                type: 'timeGrid',
+                duration: { days: 7 },
+                buttonText: 'week',
+                titleFormat: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+            },
+            dayGridMonth: {
+                dayHeaderFormat: { weekday: 'short' },
+                dayMaxEventRows: 3, // Limita a 3 filas de eventos por día
+            }
+        },
+        events: '/sesion/events',
+        dateClick: function(info) {
+            window.location.href = '/sesion/create?date=' + info.dateStr;
+        },
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,listWeek'
+        },
+        themeSystem: 'bootstrap',
+        height: 'auto',
+    });
+    calendar.render();
+});
+
 
     </script>
 @endpush

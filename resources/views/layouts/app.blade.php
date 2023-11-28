@@ -62,6 +62,10 @@
                      <a class="nav-link" href="{{ route('sesion.index') }}">Sesiones</a>
                     </li>
 
+                    <li class="nav-item">
+                     <a class="nav-link" href="{{ route('galeria.index') }}">Galeria</a>
+                    </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

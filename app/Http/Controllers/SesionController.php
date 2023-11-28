@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade\pdf as PDF;
 
+
+//METODOS CREADOS PROPIAMENTE
+
 class SesionController extends Controller
 {
     public function pdf()
@@ -16,6 +19,29 @@ class SesionController extends Controller
         return $pdf->download('listadoSesion.pdf');
 
     }
+
+
+    public function events(Request $request)
+    {
+        $sesiones = Sesiones::all();
+
+        $events = [];
+        foreach ($sesiones as $sesion) {
+            $events[] = [
+                'title' => $sesion->descripcion_sesion,
+                'start' => $sesion->fecha_inicio,
+                'end' => $sesion->hora_sesion,
+                // Puedes agregar más campos si los necesitas
+            ];
+        }
+
+        return response()->json($events);
+    }
+
+
+
+
+//METODOS AGREGADOS AUTOMATICAMENTE POR LARAVEL
 
 
     public function index(Request $request)
@@ -35,10 +61,11 @@ class SesionController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('sesioncreate');
+        $date = $request->query('date');
+        return view('sesioncreate', compact('date'));
     }
 
 

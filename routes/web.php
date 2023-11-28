@@ -6,6 +6,7 @@ use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\TransaccionController;
+use App\Http\Controllers\GaleriaController;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -69,6 +70,7 @@ Route::get('/search', [EquipoController::class, 'index']); // Ruta para la búsq
 
 
 //Sesion
+Route::get('/sesion/events', [SesionController::class, 'events']); //CALENDARIO CALENDARIOOOOOO POR SI SE TE OLVIDA O SI TIENES PROBLEMAS
 Route::get('sesion/create',[SesionController::class, 'create']);
 Route::resource('sesion',SesionController::class);
 Route::get('delete/{id}',[SesionController::class, 'destroy']);
@@ -76,6 +78,9 @@ Route::post('/sesion/{id}/SesionEdit', [SesionController::class, 'update'])->nam
 Route::put('/sesion/{id}/SesionEdit', [SesionController::class, 'update'])->name('sesion.update');
 Route::get('descargar-sesiones', [SesionController::class, 'pdf'])->name('listadoSesion.pdf');
 Route::get('/search', [SesionController::class, 'index']); // Ruta para la búsqueda
+//calendario de sesion, por favor no olvides moverle aqui si algo falla (te quiero yo del futuro, buena suerte)
+
+
 
 
 //Clientes
@@ -88,4 +93,11 @@ Route::get('descargar-clientes', [ClienteController::class, 'pdf'])->name('lista
 Route::get('/search', [ClienteController::class, 'index']); // Ruta para la búsqueda
 
 
-
+//Galeria
+Route::get('galeria/create',[GaleriaController::class, 'create']);
+Route::resource('galeria',GaleriaController::class);
+Route::get('delete/{id}',[GaleriaController::class, 'destroy']);
+Route::post('/galeria/{id}/GaleriaEdit', [GaleriaController::class, 'update'])->name('galeria.update');
+Route::put('/galeria/{id}/GaleriaEdit', [GaleriaController::class, 'update'])->name('galeria.update');
+//Route::get('descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
+Route::get('/search', [GaleriaController::class, 'index']); // Ruta para la búsqueda
