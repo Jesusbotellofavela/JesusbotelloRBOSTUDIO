@@ -35,7 +35,7 @@ class GaleriaController extends Controller
         $cliente = Cliente::all();
 
 
-        return view('galeriacreate', compact('cliente'));
+        return view('GaleriaCreate', compact('cliente'));
     }
 
     /**
