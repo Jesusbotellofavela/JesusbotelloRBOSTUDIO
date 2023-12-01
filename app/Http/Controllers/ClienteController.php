@@ -49,7 +49,7 @@ class ClienteController extends Controller
         $transaccion = Transacciones::all();
         $users = User::all();
 
-        return view('clientescreate', compact('contrato','equipo','sesion','transaccion','users'));
+        return view('ClientesCreate', compact('contrato','equipo','sesion','transaccion','users'));
     }
 
     /**
