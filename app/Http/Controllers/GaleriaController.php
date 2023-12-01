@@ -77,7 +77,7 @@ class GaleriaController extends Controller
         $cliente = Cliente::all();
         $galeria = Galeria::find($id); // Encuentra la galería que se desea editar
 
-        return view('galeriacreate', compact('cliente', 'galeria')); // Pasa la galería a la vista para la edición
+        return view('GaleriaCreate', compact('cliente', 'galeria')); // Pasa la galería a la vista para la edición
     }
 
 

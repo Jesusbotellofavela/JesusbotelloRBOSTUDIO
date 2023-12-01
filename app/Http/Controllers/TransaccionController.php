@@ -39,7 +39,7 @@ class TransaccionController extends Controller
      */
     public function create()
     {
-        return view('transaccioncreate');
+        return view('TransaccionCreate');
     }
 
     /**

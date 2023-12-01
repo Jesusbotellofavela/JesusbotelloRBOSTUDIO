@@ -65,7 +65,7 @@ class SesionController extends Controller
     {
         //
         $date = $request->query('date');
-        return view('sesioncreate', compact('date'));
+        return view('SesionCreate', compact('date'));
     }
 
 
