@@ -39,7 +39,7 @@ Route::resource('contrato',ContratoController::class);
 Route::get('delete/{id}',[ContratoController::class, 'destroy']);
 Route::post('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
 Route::put('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
-Route::get('descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
+Route::get('/descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
 Route::get('/search', [ContratoController::class, 'index']); // Ruta para la búsqueda
 
 
@@ -89,7 +89,7 @@ Route::resource('cliente',ClienteController::class);
 Route::get('delete/{id}',[ClienteController::class, 'destroy']);
 Route::post('/cliente/{id}/ClientesEdit', [ClienteController::class, 'update'])->name('cliente.update');
 Route::put('/cliente/{id}/ClientesEdit', [ClienteController::class, 'update'])->name('cliente.update');
-Route::get('descargar-clientes', [ClienteController::class, 'pdf'])->name('listado.pdf');
+Route::get('/descargar-clientes', [ClienteController::class, 'pdf'])->name('listado.pdf');
 Route::get('/search', [ClienteController::class, 'index']); // Ruta para la búsqueda
 
 
