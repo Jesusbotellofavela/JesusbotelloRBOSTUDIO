@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Sesiones;
 use App\Models\Transacciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use PDF;
 
