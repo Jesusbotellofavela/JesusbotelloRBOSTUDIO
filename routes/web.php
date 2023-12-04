@@ -99,5 +99,5 @@ Route::resource('galeria',GaleriaController::class);
 Route::get('delete/{id}',[GaleriaController::class, 'destroy']);
 Route::post('/galeria/{id}/GaleriaEdit', [GaleriaController::class, 'update'])->name('galeria.update');
 Route::put('/galeria/{id}/GaleriaEdit', [GaleriaController::class, 'update'])->name('galeria.update');
-//Route::get('descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
+Route::get('descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
 Route::get('/search', [GaleriaController::class, 'index']); // Ruta para la búsqueda

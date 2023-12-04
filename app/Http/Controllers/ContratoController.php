@@ -17,7 +17,7 @@ class ContratoController extends Controller
     public function pdf() {
         $contrato = Contrato::all();
         $pdf = PDF::loadView('pdf.listadoContrato', compact('contrato'));
-        return $pdf->download('listadoContrato.pdf');
+        return $pdf->stream('listadoContrato.pdf');
 
     }
 
