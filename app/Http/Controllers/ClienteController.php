@@ -10,7 +10,7 @@ use App\Models\Sesiones;
 use App\Models\Transacciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use PDF;
 
 class ClienteController extends Controller
 {
