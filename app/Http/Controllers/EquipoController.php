@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Equipo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use PDF;
 
 
 class EquipoController extends Controller
@@ -14,7 +14,7 @@ class EquipoController extends Controller
     public function pdf() {
         $equipo = Equipo::all();
         $pdf = PDF::loadView('pdf.listadoEquipo', compact('equipo'));
-        return $pdf->download('listadoEquipo.pdf');
+        return $pdf->stream('listadoEquipo.pdf');
 
     }
 

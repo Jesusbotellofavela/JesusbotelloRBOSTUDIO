@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sesiones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use PDF;
 
 
 //METODOS CREADOS PROPIAMENTE
@@ -16,7 +16,7 @@ class SesionController extends Controller
     {
         $sesion = Sesiones::all();
         $pdf = PDF::loadView('pdf.listadoSesion', compact('sesion'));
-        return $pdf->download('listadoSesion.pdf');
+        return $pdf->stream('listadoSesion.pdf');
 
     }
 

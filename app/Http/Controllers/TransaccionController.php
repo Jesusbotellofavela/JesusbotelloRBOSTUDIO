@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Transacciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use PDF;
 
 class TransaccionController extends Controller
 {
     public function pdf() {
         $transaccion = Transacciones::all();
         $pdf = PDF::loadView('pdf.listadoTransaccion', compact('transaccion'));
-        return $pdf->download('listadoTransaccion.pdf');
+        return $pdf->stream('listadoTransaccion.pdf');
 
     }
 
