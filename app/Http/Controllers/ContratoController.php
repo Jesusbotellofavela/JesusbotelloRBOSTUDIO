@@ -7,7 +7,7 @@ use App\Models\Contrato;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use PDF;
 
 
 class ContratoController extends Controller
