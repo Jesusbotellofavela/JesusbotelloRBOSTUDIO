@@ -10,13 +10,13 @@ use App\Models\Sesiones;
 use App\Models\Transacciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\Facade\pdf as PDF;
+use Barryvdh\DomPDF\Facade\pdf;
 
 class ClienteController extends Controller
 {
     public function pdf() {
         $cliente = Cliente::all();
-        $pdf = PDF::loadView('pdf.listado', compact('cliente'));
+        $pdf = pdf::loadView('pdf.listado', compact('cliente'));
         return $pdf->download('listado.pdf');
 
     }
