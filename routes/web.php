@@ -39,7 +39,7 @@ Route::resource('contrato',ContratoController::class);
 Route::get('delete/{id}',[ContratoController::class, 'destroy']);
 Route::post('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
 Route::put('/contrato/{id}/ContratoEdit', [ContratoController::class, 'update'])->name('contrato.update');
-Route::get('descargar-contrato', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
+Route::get('ContratoEdit', [ContratoController::class, 'pdf'])->name('listadoContrato.pdf');
 Route::get('/search', [ContratoController::class, 'index']); // Ruta para la búsqueda
 
 
