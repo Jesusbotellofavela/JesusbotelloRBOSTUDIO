@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PDF;
 
+
 class ClienteController extends Controller
 {
     public function pdf() {
