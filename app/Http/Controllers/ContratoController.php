@@ -43,10 +43,11 @@ class ContratoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('contratocreate');
+        $date = $request->query('date');
+        return view('contratocreate',compact('date'));
     }
 
     /**

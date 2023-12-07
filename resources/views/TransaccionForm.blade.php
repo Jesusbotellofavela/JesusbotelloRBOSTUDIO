@@ -33,7 +33,10 @@
 
 <div class="col-md-6">
     {{ Form::label('fecha_transaccion', 'Fecha de la Transacción:', ['class' => 'form-label']) }}
-    {{ Form::text('fecha_transaccion', $transaccion->fecha_transaccion ?? old('fecha_transaccion'), ['class' => 'form-control' . ($errors->has('fecha_transaccion') ? ' is-invalid' : '')]) }}
+    <div style="position: relative;">
+        {{ Form::text('fecha_transaccion', $transaccion->fecha_transaccion ?? old('fecha_transaccion'), ['class' => 'form-control' . ($errors->has('fecha_transaccion') ? ' is-invalid' : ''), 'id' => 'datepicker_transaccion']) }}
+        <i class="far fa-calendar-alt" id="icono_calendario_transaccion" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+    </div>
     @error('fecha_transaccion')
         <div class="invalid-feedback" style="color: red;">
             {{ $message }}
@@ -53,7 +56,20 @@
     @enderror
 </div>
 
+<!-- jQuery UI (Datepicker) CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+<script>
+    $(document).ready(function() {
+        $("#datepicker_transaccion").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
 
 
 

@@ -9,7 +9,10 @@
 
 <div class="col-md-6">
     {{ Form::label('fecha_inicio_contrato', 'Fecha de Inicio del Contrato', ['class' => 'form-label']) }}
-    {{ Form::text('fecha_inicio_contrato', $contrato->fecha_inicio_contrato ?? old('fecha_inicio_contrato'), ['class' => 'form-control' . ($errors->has('fecha_inicio_contrato') ? ' is-invalid' : '')]) }}
+    <div style="position: relative;">
+        {{ Form::text('fecha_inicio_contrato', $contrato->fecha_inicio_contrato ?? old('fecha_inicio_contrato'), ['class' => 'form-control' . ($errors->has('fecha_inicio_contrato') ? ' is-invalid' : ''), 'id' => 'datepicker_inicio_contrato']) }}
+        <i class="far fa-calendar-alt" id="icono_calendario_inicio_contrato" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+    </div>
     @error('fecha_inicio_contrato')
         <div class="invalid-feedback" style="color: red;">
             {{ $message }}
@@ -18,9 +21,14 @@
 </div>
 
 
+
+
 <div class="col-md-6">
     {{ Form::label('fecha_fin_contrato', 'Fecha de Finalización del Contrato', ['class' => 'form-label']) }}
-    {{ Form::text('fecha_fin_contrato', $contrato->fecha_fin_contrato ?? old('fecha_fin_contrato'), ['class' => 'form-control' . ($errors->has('fecha_fin_contrato') ? ' is-invalid' : '')]) }}
+    <div style="position: relative;">
+        {{ Form::text('fecha_fin_contrato', $contrato->fecha_fin_contrato ?? old('fecha_fin_contrato'), ['class' => 'form-control' . ($errors->has('fecha_fin_contrato') ? ' is-invalid' : ''), 'id' => 'datepicker_fin_contrato']) }}
+        <i class="far fa-calendar-alt" id="icono_calendario_fin_contrato" style="position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+    </div>
     @error('fecha_fin_contrato')
         <div class="invalid-feedback" style="color: red;">
             {{ $message }}
@@ -62,7 +70,29 @@
     @enderror
 </div>
 
+<!-- SCRIPT PARA MINI CALENDARIO -->
 
+
+<!-- jQuery UI (Datepicker) CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $(document).ready(function() {
+        $("#datepicker_inicio_contrato").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $("#datepicker_fin_contrato").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
 
 
 
